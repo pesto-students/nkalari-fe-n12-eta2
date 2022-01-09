@@ -1,0 +1,28 @@
+
+.login-input-section{
+    width: 60%;
+    height: 100%;
+    color: white;
+    margin-top: 15%;
+    margin-left: 0;
+}
+
+.mobile-input{
+    height: 40px;
+    background-color: #234C54;
+    opacity: 0.6;
+    border-radius: 3px;
+    border :none;
+}
+
+.btn-signin{
+    width: 6rem;
+    height: 2rem;
+    background: #384BF5;
+    border-radius: 4px;
+    color: white;
+    border: none;
+    max-width: 100%;
+    margin-top: 2%;
+
+}
