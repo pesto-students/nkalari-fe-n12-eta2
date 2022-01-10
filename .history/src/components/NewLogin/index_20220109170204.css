@@ -1,0 +1,167 @@
+*{
+    padding: 0;
+    margin: 0;
+   
+  }
+ 
+  
+  html {
+    background-size: cover;
+    
+  }
+  
+  h1 {
+    font-family: 'Permanent Marker';
+    font-size: 64px;
+  }
+  
+  p, small, input {
+    font-family: 'Roboto slab';
+    font-style: bold;
+    font-size: 1.2em;
+  }
+  
+  .container {
+    /* margin: 150px auto; */
+    max-width: 100%;
+    height: 83%;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    padding-left: 5%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+  }
+  
+  .column {
+    margin: 10px auto;
+    padding: 10px;
+    flex: 1 1 0px;
+  }
+  
+  
+  .column:first-of-type {
+    background-image: url("https://images.unsplash.com/photo-1575285113814-f770cb8c796e?cs=srgb&fm=jpg&ixid=Mnw3MjAxN3wwfDF8c2VhcmNofDc3fHxnaWd8ZW58MHx8fHwxNjQxNzI0NzU2&ixlib=rb-1.2.1&q=85&q=85&fmt=jpg&crop=entropy&cs=tinysrgb&w=650");
+    background-repeat: no-repeat;
+    height: 100%;
+    box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.267);
+    border-radius: 10px 5px 5px 10px  }
+  
+  @media only screen and (max-width: 420px) {
+    container {
+      margin: 0 auto;
+    }
+    
+    .text-box h1 {
+      font-size: 32px;
+    }
+    
+    .column {
+      width: 100%;
+      flex-direction: column;
+      
+    }
+  }
+  
+  /* text box */
+  .text-box h1 {
+    color: #fff;
+  }
+  
+  .text-box h3 {
+    color: #fff;
+    font-weight: bold;
+    /* font-size: 48; */
+  }
+  
+  .learn-more {
+    margin: 20px 0;
+  }
+  
+  .play-icon {
+    position: relative;
+    display: inline-block;
+    background-color: #F26363;
+    width: 40px;
+    height: 40px;
+    padding: 10px 10px;
+    border-radius: 100%;
+    margin: 0 20px 0 0;
+    cursor: pointer;
+  }
+  
+  .play-icon p {
+    position: absolute;
+    top: 14px;
+    left: 20px;
+    font-size: 28px;
+  }
+  
+  .play-icon:hover {
+    filter: brightness(75%);
+  }
+  
+  .text {
+    position: relative;
+    /*display: inline-block;*/
+    bottom: 45px;
+    left: 70px;
+  }
+  
+  
+  /* login box */
+  .login-box {
+    flex-grow: 1;
+    padding: 25px 50px 50px 50px;
+  
+  }
+  
+  .form-group:nth-of-type(1) ~ .form-group {
+    margin-top: 25px;
+  }
+  
+  .form-group small {
+    color: #fff;
+  }
+  
+  input, button {
+    font-size: 18px;
+    border: solid 1px;
+    border-radius: 5px;
+    display: block;
+    line-height: 48px;
+  }
+  
+  input {
+    border: none;
+    color: #274001;
+    background-color: #fff;
+    width: calc(100% - 60px);
+    padding-left: 10px;
+  }
+  
+  input::placeholder {
+    color: #274001;
+  }
+  
+  .error {
+    float: left;
+    color: red;
+  }
+  
+  button {
+    border: none;
+    color: #fff;
+    background-color: #4E40ED;
+    width: 30%;
+  }
+  
+  button:nth-of-type(2) {
+    margin: 25px 0 0 0;
+  }
+  
+  button:hover {
+    cursor: pointer;
+    filter: brightness(75%);
+  }

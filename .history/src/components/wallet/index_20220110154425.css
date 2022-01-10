@@ -1,0 +1,83 @@
+.container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.left{
+    width: 50%;
+    height: 100%;
+    margin-top: 10%;
+
+}
+
+.heading{
+    color: white;
+    text-align: left;
+    margin-left: 10%;
+    /* margin-top: 3%; */
+}
+
+.balance-heading{
+    color :white;
+    text-align: left;
+    margin-left: 10%;
+}
+
+.balance-value{
+    color :white;
+    text-align: left;
+    margin-left: 15%;
+    margin-top: 2%;
+}
+
+.buttons{
+    width: 100%;
+    float: left;
+    margin-left: 10%;
+
+}
+
+.withdraw{
+    margin-right: 4%;
+    width: 8rem;
+    height: 3rem;
+    background: #384BF5;
+    border-radius: 4px;
+    color: white;
+    border: none;
+    max-width: 100%;
+
+}
+
+.recharge{
+    width: 8rem;
+    height: 3rem;
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='367' height='137' viewBox='0 0 387 137' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg filter='url(%23filter0_d_626_7704)'%3E%3Cpath d='M4 10C4 4.47715 8.47715 0 14 0H373C378.523 0 383 4.47715 383 10V119C383 124.523 378.523 129 373 129H14C8.47716 129 4 124.523 4 119V10Z' fill='url(%23paint0_radial_626_7704)' shape-rendering='crispEdges'/%3E%3C/g%3E%3Cdefs%3E%3Cfilter id='filter0_d_626_7704' x='0' y='0' width='387' height='137' filterUnits='userSpaceOnUse' color-interpolation-filters='sRGB'%3E%3CfeFlood flood-opacity='0' result='BackgroundImageFix'/%3E%3CfeColorMatrix in='SourceAlpha' type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0' result='hardAlpha'/%3E%3CfeOffset dy='4'/%3E%3CfeGaussianBlur stdDeviation='2'/%3E%3CfeComposite in2='hardAlpha' operator='out'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0'/%3E%3CfeBlend mode='normal' in2='BackgroundImageFix' result='effect1_dropShadow_626_7704'/%3E%3CfeBlend mode='normal' in='SourceGraphic' in2='effect1_dropShadow_626_7704' result='shape'/%3E%3C/filter%3E%3CradialGradient id='paint0_radial_626_7704' cx='0' cy='0' r='1' gradientUnits='userSpaceOnUse' gradientTransform='translate(193.5 64.5) rotate(90) scale(64.5 189.5)'%3E%3Cstop stop-color='%2326B16F' stop-opacity='0.88'/%3E%3Cstop offset='1' stop-color='%23058447'/%3E%3C/radialGradient%3E%3C/defs%3E%3C/svg%3E");
+    color: white;
+    border: none;
+    border-radius: 6px;
+    max-width: 100%;
+}
+
+.right{
+    position:relative;
+    top: 0px;
+    bottom: 5%;
+
+}
+
+.recent-transactions {
+  float: left;
+}
+
+.box-transaction {
+  width: 529px;
+  height: 123px;
+  left: 1345px;
+  top: 201px;
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+}
