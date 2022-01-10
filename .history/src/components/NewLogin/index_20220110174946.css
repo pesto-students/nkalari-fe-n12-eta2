@@ -25,7 +25,7 @@
   .container {
     /* margin: 150px auto; */
     max-width: 100%;
-    height: 100%;
+    height: 83%;
     padding-top: 5%;
     padding-bottom: 5%;
     padding-left: 5%;
@@ -42,6 +42,7 @@
   
   .overlay{
     background: linear-gradient(#8d27309d, #2b66728f);
+
     overflow: hidden;
     width: 100%;
     height: 100%;
