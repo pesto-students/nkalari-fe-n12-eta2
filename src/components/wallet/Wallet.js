@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import styles from "./index.css";
+import "./index.css";
 import { connect } from "react-redux";
 import { userActions } from "./../../actions/user.action";
 import Diamonds from "./../../images/Diamonds.png";
@@ -27,7 +27,12 @@ class Wallet extends Component {
             </div>
             <div className="buttons">
               <button className="withdraw">Withdraw</button>
-              <button className="recharge">Recharge</button>
+              <button
+                className="recharge"
+                onClick={() => this.props.history.push("/recharge")}
+              >
+                Recharge
+              </button>
             </div>
           </div>
           <div class="vertical-line"></div>

@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import styles from "./index.css";
-import firebase from "./../../helpers/firebase";
+import firebase from "../../helpers/firebase";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 
 const useState = React.useState;
 
-function CreateProfile(props) {
+function Login(props) {
   const [loggedIn, setLoggedIn] = useState(false);
 
   return (
@@ -46,16 +46,6 @@ function CreateUserScreen(props) {
       return true;
     }
   }
-
-  // Validate fullName function
-  // function fullNameIsValid(fullName) {
-  //   if (fullName == undefined || fullName == "") {
-  //     setFullNameError("Must enter a Full Name");
-  //   } else {
-  //     setFullNameError("");
-  //     return true;
-  //   }
-  // }
 
   function phoneNumberIsValid(phoneNumber) {
     const number = phoneNumber.trim().replaceAll(" ", "");
@@ -239,4 +229,4 @@ function CreateUserScreen(props) {
   );
 }
 
-export default CreateProfile;
+export default Login;
