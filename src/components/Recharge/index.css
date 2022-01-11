@@ -1,0 +1,17 @@
+.recharge-pack p {
+  font-family: "Roboto slab", sans-serif;
+}
+
+.left-side {
+  width: 50%;
+  height: 100%;
+}
+
+/* .recharge-container {
+  width: 90%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  padding-top: 30px;
+} */
