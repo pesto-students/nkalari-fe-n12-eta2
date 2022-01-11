@@ -3,7 +3,8 @@ import { userConstants } from "./../constants/user.constants";
 
 export const userActions = {
     getTransactions,
-    Signup
+    Signup,
+    getProfile
   };
 
   function getTransactions(){
@@ -51,5 +52,30 @@ export const userActions = {
     function failure(error) {
       return { type: userConstants.REGISTER_FAILURE, error };
     }
+
+}
+
+function getProfile(){
+
+  return (dispatch) => {
+    dispatch(request());
+    userService.getProfile().then((profile)=>{
+      dispatch(success(profile));
+
+    },
+    (error) => {
+      dispatch(failure(error.toString()));
+
+    })
+  };
+  function request(profile) {
+    return { type: userConstants.GETALL_REQUEST, profile };
+  }
+  function success(profile) {
+    return { type: userConstants.GETALL_SUCCESS, profile };
+  }
+  function failure(error) {
+    return { type: userConstants.GETALL_FAILURE, error };
+  }
 
 }

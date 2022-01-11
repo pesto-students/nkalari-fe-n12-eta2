@@ -3,7 +3,8 @@
 
 export const userService = {
     getTransactions,
-    Signup
+    Signup,
+    getProfile
 
   };
 
@@ -34,7 +35,20 @@ export const userService = {
       
       return await handleResponse(response);
   }
-
+  
+  async function getProfile(){
+    const requestOptions = {
+        method: "GET",
+        headers: { "Content-Type": "application/json" }, /* Give the required headers here */
+      };
+    
+      const response = await fetch(
+        'https://run.mocky.io/v3/64ffd4e3-f8f0-4a08-a751-28a5e2063c73',
+        requestOptions
+      );
+      
+      return await handleResponse(response);
+  }
 
   function handleResponse(response) {
     return response.text().then((text) => {
