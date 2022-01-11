@@ -2,3 +2,22 @@ input:checked ~ .dot {
   transform: translateX(100%);
   background-color: rgb(107, 114, 128);
 }
+
+/* login box */
+.onboarding-box {
+  flex-grow: 1;
+  padding: 0 40px 55px 50px;
+}
+
+.onboarding-box .hero-img {
+  width: 10%;
+  height: 10%;
+  margin: auto;
+}
+
+.onboarding-box h2 {
+  color: #fff;
+  font-size: 40px;
+  font-family: "Robot slab";
+  margin-top: 5%;
+}

@@ -8,6 +8,8 @@ const Onboarding = () => {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [gender, setGender] = useState("male");
+  const [profileImage, setProfileImage] = useState("");
+  const [profileImageUrl, setProfileImageUrl] = useState("");
   const history = useHistory();
 
   const handleSubmit = (e) => {
@@ -15,7 +17,7 @@ const Onboarding = () => {
     axios
       .put(
         `${process.env.REACT_APP_DOMAIN}/api/users`,
-        { firstName, lastName, email, gender },
+        { firstName, lastName, email, gender, profileImageUrl },
         {
           headers: {
             authorization: localStorage.getItem("nkalari"),
@@ -26,6 +28,25 @@ const Onboarding = () => {
         if (response.data.success) {
           history.push("/wallet");
         }
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const handleProfileImage = (e) => {
+    setProfileImage(e.target.files[0]);
+    handleImageUpload(e.target.files[0]);
+  };
+
+  const handleImageUpload = (profileImage) => {
+    const data = new FormData();
+    data.append("file", profileImage);
+    data.append("upload_preset", process.env.REACT_APP_CLOUDINARY_PRESET);
+    data.append("cloud_name", process.env.REACT_APP_CLOUDINARY_CLOUD_NAME);
+    axios
+      .post(process.env.REACT_APP_CLOUDINARY_URL, data)
+      .then((res) => {
+        setProfileImageUrl(res.data.url);
+        setProfileImageUrl("");
       })
       .catch((err) => console.log(err));
   };
@@ -41,13 +62,34 @@ const Onboarding = () => {
             </h2>
           </div>
         </div>
-        <div className="login-box column">
-          <img src={require("./../../images/N.png")}></img>
-          <h2>Create Your Profile</h2>
 
+        <div className="onboarding-box column">
+          <img className="hero-img" src={require("./../../images/N.png")}></img>
+          <h2>Create Your Profile</h2>
           <form onSubmit={handleSubmit}>
-            <div id="sign-in-button"></div>
-            <div className="form-group">
+            <div className="form-group flex flex-col">
+              <div className="flex items-center">
+                <div class="shrink-0">
+                  <img
+                    class="h-16 w-16 object-cover rounded-full"
+                    src={
+                      profileImage
+                        ? URL.createObjectURL(profileImage)
+                        : "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"
+                    }
+                    alt="Current profile photo"
+                  />
+                </div>
+                <label class="block">
+                  <span class="sr-only">Choose profile photo</span>
+                  <input
+                    type="file"
+                    class="ml-6 w-1/2 file:rounded-full file:border-0 file:py-2 file:px-10 file:mr-10 file:text-sm"
+                    accept="image/*"
+                    onChange={handleProfileImage}
+                  />
+                </label>
+              </div>
               <input
                 onChange={(e) => setFirstName(e.target.value)}
                 name="firstName"
@@ -56,8 +98,9 @@ const Onboarding = () => {
                 required
                 value={firstName}
               />
-            </div>
-            <div className="form-group">
+              {/* </div>
+            <div className="form-group"> */}
+
               <input
                 onChange={(e) => setLastName(e.target.value)}
                 name="lastName"
@@ -66,14 +109,13 @@ const Onboarding = () => {
                 required
                 value={lastName}
               />
-            </div>
-            <div className="form-group">
+              {/* </div>
+            <div className="form-group"> */}
               <input
                 onChange={(e) => setEmail(e.target.value)}
                 name="email"
                 placeholder="Email"
                 type="text"
-                required
                 value={email}
               />
             </div>

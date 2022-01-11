@@ -3,6 +3,7 @@ import styles from "./index.css";
 import firebase from "./../../helpers/firebase";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
+import { useDispatch } from "react-redux";
 
 const useState = React.useState;
 
@@ -27,6 +28,8 @@ function CreateUserScreen(props) {
   const [phoneNumberError, setPhoneNumberError] = useState("");
   const [otpError, setOtpError] = useState("");
   const [showOtpInput, setShowOtpInput] = useState(false);
+
+  const dispatch = useDispatch();
 
   const history = useHistory();
   // Validate email function
