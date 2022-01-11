@@ -1,14 +1,14 @@
-import React, { Component } from "react"
+import React, { useEffect, useState } from "react"
 import styles from './index.css';  
 import Navbar from "../navbar/Navbar";
 import { userActions } from "./../../actions/user.action";
-import { connect } from "react-redux";
+import { connect, useSelector } from "react-redux";
 
 
 
 function Profile(props) {
-
-    
+    const [profile, setProfile] = useState();
+    useEffect(() => setProfile(props.getProfile()), [profile])
     return(
       <>
         <DisplayProfileScreen/>
@@ -17,8 +17,8 @@ function Profile(props) {
   }
 
   function DisplayProfileScreen(props) {
-  
-    userActions.getProfile()
+   const profile = useSelector(state => state.getProfile)
+    console.log("image", profile?.image);
 
     return(
         <div className="main">
@@ -27,6 +27,15 @@ function Profile(props) {
         <div className="card">
 
         <div className="featuring">
+
+        <div className="flex flex-wrap justify-center">
+        <div className="w-8/12 sm:w-3/12 px-8 my-20">
+            <img src={profile?.image} alt="..." className="shadow-lg rounded-full max-w-full h-auto align-middle border-none" />
+        </div>
+    </div>
+       
+
+
 
         </div>
 

@@ -56,7 +56,6 @@ export const userActions = {
 }
 
 function getProfile(){
-
   return (dispatch) => {
     dispatch(request());
     userService.getProfile().then((profile)=>{

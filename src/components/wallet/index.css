@@ -1,78 +1,76 @@
-.container{
-    width: 90%;
-    height: 100%;
-    display: flex;
-    flex-direction: row;
+.container {
+  width: 90%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
 }
-.left{
-    width: 50%;
-
-}
-
-.heading{
-    color: white;
-    text-align: left;
-    margin-left: 2%;
-    font-family: 'Roboto slab';
-    font-weight: bold;
-    font-size: 2rem;
-    /* margin-top: 3%; */
+.left {
+  width: 50%;
+  margin-top: 30%;
+  height: 100%;
 }
 
-.balance-heading{
-    color :white;
-    text-align: left;
-    font-family: 'Roboto slab';
-    font-weight: bold;
-    font-size: 2rem;
+.heading {
+  color: white;
+  text-align: left;
+  margin-left: 2%;
+  font-family: "Roboto slab";
+  font-weight: bold;
+  font-size: 2rem;
+  /* margin-top: 3%; */
 }
 
-.balance-value{
-    color :white;
-    text-align: left;
-    margin-top: 2%;
-    font-family: 'Roboto slab';
-    font-weight: bold;
-    font-size: 3rem;
+.balance-heading {
+  color: white;
+  text-align: left;
+  font-family: "Roboto slab";
+  font-weight: bold;
+  font-size: 2rem;
 }
 
-.buttons{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-
+.balance-value {
+  color: white;
+  text-align: left;
+  margin-top: 2%;
+  font-family: "Roboto slab";
+  font-weight: bold;
+  font-size: 3rem;
 }
 
-.withdraw{
-    margin-right: 4%;
-    width: 8rem;
-    height: 3rem;
-    background: #384BF5;
-    border-radius: 4px;
-    color: white;
-    border: none;
-    max-width: 100%;
-    margin-top: 4%;
-
+.buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
-.recharge{
-    margin-right: 4%;
-    width: 8rem;
-    height: 3rem;
-    background: #1d8825;
-    border-radius: 4px;
-    color: white;
-    border: none;
-    max-width: 100%;
+.withdraw {
+  margin-right: 4%;
+  width: 8rem;
+  height: 3rem;
+  background: #384bf5;
+  border-radius: 4px;
+  color: white;
+  border: none;
+  max-width: 100%;
+  margin-top: 4%;
 }
 
-.right{
-    width: 50%;
-    margin-left: 10%;
-
+.recharge {
+  margin-right: 4%;
+  width: 8rem;
+  height: 3rem;
+  background: #1d8825;
+  border-radius: 4px;
+  color: white;
+  border: none;
+  max-width: 100%;
 }
 
+.right {
+  width: 50%;
+  margin-left: 10%;
+}
 
 .box-transaction {
   width: 30rem;
@@ -84,22 +82,21 @@
   border-radius: 20px;
 }
 
-.vertical-line{
-    border-left: 1px solid rgba(255, 255, 255, 0.452);
-    height: 70%;
-    position: absolute;
-    margin-top: 5%;
-    left: 55%;
-    top: 0;
-
+.vertical-line {
+  border-left: 1px solid rgba(255, 255, 255, 0.452);
+  height: 70%;
+  position: absolute;
+  margin-top: 5%;
+  left: 55%;
+  top: 0;
 }
-.main{
-    display: flex;
-    flex-direction: row;
+.main {
+  display: flex;
+  flex-direction: row;
 }
 
-.nav-bar{
-    width: 10%;
-    position: absolute;
-    left: auto;
+.nav-bar {
+  width: 10%;
+  position: absolute;
+  left: auto;
 }
