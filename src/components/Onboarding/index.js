@@ -1,13 +1,21 @@
-import React, { useState } from "react";
+import React, { Fragment, useState } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import "./index.css";
+import { Listbox , Transition } from '@headlessui/react'
+import { CheckIcon, SelectorIcon } from '@heroicons/react/solid'
 
 const Onboarding = () => {
+
+  const genderList = [
+    { id: 1, name: 'Male', unavailable: false },
+    { id: 2, name: 'Transgender', unavailable: false },
+    { id: 3, name: 'Female', unavailable: false },
+  ]
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
-  const [gender, setGender] = useState("male");
+  const [gender, setGender] = useState(genderList[0]);
   const [profileImage, setProfileImage] = useState("");
   const [profileImageUrl, setProfileImageUrl] = useState("");
   const history = useHistory();
@@ -50,6 +58,7 @@ const Onboarding = () => {
       })
       .catch((err) => console.log(err));
   };
+
 
   return (
     <>
@@ -119,7 +128,7 @@ const Onboarding = () => {
                 value={email}
               />
             </div>
-            <div className="form-group">
+            {/* <div className="form-group">
               <div className="flex w-full mb-12">
                 <label
                   for="gender"
@@ -146,6 +155,62 @@ const Onboarding = () => {
                   </div>
                 </label>
               </div>
+            </div> */}
+             <div className=" w-60 translate-x-2/3">
+              <Listbox value={gender} onChange={setGender}>
+                <div className="relative  mt-1">
+                  <Listbox.Button className="relative bg-gray-500 w-full py-2 pl-3 pr-10 text-left rounded-lg shadow-md cursor-default focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-100 focus-visible:ring-white focus-visible:ring-offset-grey-300 focus-visible:ring-offset-2 focus-visible:border-indigo-500 sm:text-sm">
+                    <span className="block truncate">{gender.name}</span>
+                    <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
+                      <SelectorIcon
+                        className="w-5 h-5 text-gray-400"
+                        aria-hidden="true"
+                      />
+                    </span>
+                  </Listbox.Button>
+                  <Transition
+                    as={Fragment}
+                    leave="transition ease-in duration-100"
+                    leaveFrom="opacity-100"
+                    leaveTo="opacity-0"
+                  >
+                    <Listbox.Options className="absolute w-full py-1 mt-1 overflow-auto text-base bg-white rounded-md shadow-lg max-h-60 ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+                      {genderList.map((genderName, genderIdx) => (
+                        <Listbox.Option
+                          key={genderIdx}
+                          className={({ active }) =>
+                            `${active ? 'text-amber-900 bg-amber-100' : 'text-gray-900'}
+                                  cursor-default select-none relative py-2 pl-10 pr-4`
+                          }
+                          value={genderName}
+                        >
+                          {({ gender, active }) => (
+                            <>
+                              <span
+                                className={`${
+                                  gender ? 'font-medium' : 'font-normal'
+                                } block truncate`}
+                              >
+                                {genderName.name}
+                              </span>
+                              {gender ? (
+                                <span
+                                  className={`${
+                                    active ? 'text-amber-600' : 'text-amber-600'
+                                  }
+                                        absolute inset-y-0 left-0 flex items-center pl-3`}
+                                >
+                                  <CheckIcon className="w-5 h-5" aria-hidden="true" />
+                                </span>
+                              ) : null}
+                            </>
+                          )}
+                        </Listbox.Option>
+                      ))}
+                    </Listbox.Options>
+                  </Transition>
+                </div>
+              </Listbox>
             </div>
             <div className="form-group">
               <button className="bg-indigo-700" type="submit">

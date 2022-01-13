@@ -115,6 +115,7 @@ function CreateUserScreen(props) {
       .then((result) => {
         // User signed in successfully.
         const user = result.user;
+        history.push("/onboarding");
         // console.log(JSON.stringify(user));
         firebase
           .auth()
