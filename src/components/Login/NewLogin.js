@@ -60,7 +60,6 @@ function CreateUserScreen(props) {
         this.onSignInSubmit();
         console.log("Recaptca varified")
       },
-      defaultCountry: "IN"
     });
   }
   
