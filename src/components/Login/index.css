@@ -187,3 +187,14 @@ button:disabled{
   font-size: 12px;
   text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.3);
 }
+
+.resend-timer{
+  position: absolute;
+  top: 65%;
+  left: 72%;
+}
+
+.resend-timer button{
+  padding:25%;
+  /* margin-left: 100%; */
+}

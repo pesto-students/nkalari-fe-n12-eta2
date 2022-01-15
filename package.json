@@ -18,6 +18,7 @@
     "craco": "^0.0.3",
     "firebase": "^9.6.1",
     "history": "^5.2.0",
+    "otp-timer": "^1.1.5",
     "postcss": "^7.0.35",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",

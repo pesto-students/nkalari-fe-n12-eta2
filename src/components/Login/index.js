@@ -12,6 +12,7 @@ import InfoIcon from '@mui/icons-material/Info';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
+import OtpTimer from 'otp-timer'
 
 const useState = React.useState;
 
@@ -36,7 +37,7 @@ function CreateUserScreen(props) {
   const [phoneNumberError, setPhoneNumberError] = useState("");
   const [otpError, setOtpError] = useState("");
   const [showOtpInput, setShowOtpInput] = useState(false);
-
+  const [resendOtp, setResendOtp] = useState(false);
   const dispatch = useDispatch();
 
   const history = useHistory();
@@ -97,6 +98,7 @@ function CreateUserScreen(props) {
     configureCaptcha();
     const number = "+"+phoneNumber;
     console.log(number);
+    setResendOtp(true);
     const appVerifier = window.recaptchaVerifier;
     await firebase
       .auth()
@@ -210,12 +212,15 @@ function CreateUserScreen(props) {
             
             <small className="error">{phoneNumberError}</small>
           </div>
-          
+          {resendOtp? <div className="resend-timer">  <OtpTimer text="Resending in" textColor="#fff" seconds= {30} minutes={0} resend={onSignInSubmit} /></div> : <div></div>}
             <div className="form-group">
               <button className="bg-indigo-700 w-1/3" type="submit" disabled={phoneNumber.length>9?false:true}>
                 Submit
               </button>
             </div>
+           
+           
+
           
         </form> :
          <form onSubmit={onSubmitOTP}>
@@ -242,7 +247,7 @@ function CreateUserScreen(props) {
           </React.Fragment>} onClick={(e) => {
             e.preventDefault();
             setPhoneNumber("+919999999999")
-          }} style={{position:"absolute", right:"0", left:"70%", bottom:"58%"}}>
+          }} style={{position:"absolute", right:"0", left:"70%", bottom:"60%"}}>
                   <IconButton>
                     <InfoIcon/>
                   </IconButton>
