@@ -123,12 +123,14 @@ input {
 
 input,
 button {
-  font-size: 18px;
-  border: solid 1px;
+  /* font-size: 18px; */
+  /* border: solid 1px; */
   border-radius: 5px;
   display: block;
-  line-height: 48px;
+  line-height: 40px;
   margin-top: 10px;
+  color: #fff;
+  /* width: 50%; */
 }
 
 input {
@@ -136,7 +138,17 @@ input {
   color: #fff;
   background-color: rgba(46, 37, 37, 0.623);
   width: 60%;
-  padding-left: 10px;
+  padding-left: 3px;
+}
+
+.OtpInput {
+  color: #fff;
+  width: 12%;
+  margin-right: 10px;
+}
+
+.OtpInput input {
+  width: 32px !important;
 }
 
 input::placeholder {
@@ -145,15 +157,16 @@ input::placeholder {
 
 .error {
   float: left;
-  color: rgb(245, 219, 219) !important;
+  color: rgb(241, 0, 0) !important;
 }
 
-button {
+/* button {
   border: none;
-  color: #fff;
+  cursor: pointer;
+  
   background-color: #4e40ed;
   width: 30%;
-}
+} */
 
 button:nth-of-type(2) {
   margin: 25px 0 0 0;
@@ -162,4 +175,38 @@ button:nth-of-type(2) {
 button:hover {
   cursor: pointer;
   filter: brightness(75%);
+}
+
+button:disabled {
+  background-color: #2d2c2f;
+  color: #4a494b;
+  filter: brightness(100%);
+}
+
+.swal-button {
+  padding: 7px 19px;
+  border-radius: 2px;
+  background-color: #683fda;
+  font-size: 12px;
+  text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.3);
+}
+
+.resend-timer {
+  /* position: absolute; */
+  /* top: 65%; */
+  /* left: 72%; */
+}
+
+.resend-timer button {
+  padding: 10px;
+  margin-left: 100%;
+  text-align: center;
+}
+
+.resend-timer div span {
+  margin-left: 20px;
+}
+
+.resend-timer button span {
+  margin-left: 0;
 }
