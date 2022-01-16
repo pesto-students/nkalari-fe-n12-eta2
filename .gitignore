@@ -4,6 +4,7 @@
 /node_modules
 /.pnp
 .pnp.js
+/.history
 
 # testing
 /coverage
@@ -23,3 +24,7 @@ yarn-debug.log*
 yarn-error.log*
 
 node_modules
+.env
+.history
+./.history
+/.history

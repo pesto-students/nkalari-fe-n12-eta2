@@ -1,55 +1,188 @@
-import { userService } from "./../services/user.service"
-import { userConstants } from "./../constants/user.constants";
+import { userService } from "./../services/user.service";
+import {
+  LOGIN_USER,
+  userConstants,
+  USER_AUTH_IN_PROGRESS,
+  IDENTIFY_USER,
+  UPDATE_LOGGED_USER,
+} from "./../constants/user.constants";
+import axios from "axios";
+import { store } from "../helpers/store";
 
 export const userActions = {
-    getTransactions,
-    Signup
+  getTransactions,
+  Signup,
+  getProfile,
+};
+
+function getTransactions() {
+  return (dispatch) => {
+    dispatch(request());
+    userService.getTransactions().then(
+      (transactions) => {
+        dispatch(success(transactions));
+      },
+      (error) => {
+        dispatch(failure(error.toString()));
+      }
+    );
   };
-
-  function getTransactions(){
-      return (dispatch) => {
-          dispatch(request());
-          userService.getTransactions().then((transactions)=>{
-            dispatch(success(transactions));
-
-          },
-          (error) => {
-            dispatch(failure(error.toString()));
-
-          })
-      };
-      function request(transactions) {
-        return { type: userConstants.GETALL_REQUEST, transactions };
-      }
-      function success(transactions) {
-        return { type: userConstants.GETALL_SUCCESS, transactions };
-      }
-      function failure(error) {
-        return { type: userConstants.GETALL_FAILURE, error };
-      }
-
+  function request(transactions) {
+    return { type: userConstants.GETALL_REQUEST, transactions };
   }
-
-  function Signup(){
-    return (dispatch) => {
-        dispatch(request());
-        userService.Signup().then((user)=>{
-          dispatch(success(user));
-
-        },
-        (error) => {
-          dispatch(failure(error.toString()));
-
-        })
-    };
-    function request(user) {
-      return { type: userConstants.REGISTER_REQUEST, user };
-    }
-    function success(user) {
-      return { type: userConstants.REGISTER_SUCCESS, user };
-    }
-    function failure(error) {
-      return { type: userConstants.REGISTER_FAILURE, error };
-    }
-
+  function success(transactions) {
+    return { type: userConstants.GETALL_SUCCESS, transactions };
+  }
+  function failure(error) {
+    return { type: userConstants.GETALL_FAILURE, error };
+  }
 }
+
+function Signup() {
+  return (dispatch) => {
+    dispatch(request());
+    userService.Signup().then(
+      (user) => {
+        dispatch(success(user));
+      },
+      (error) => {
+        dispatch(failure(error.toString()));
+      }
+    );
+  };
+  function request(user) {
+    return { type: userConstants.REGISTER_REQUEST, user };
+  }
+  function success(user) {
+    return { type: userConstants.REGISTER_SUCCESS, user };
+  }
+  function failure(error) {
+    return { type: userConstants.REGISTER_FAILURE, error };
+  }
+}
+
+function getProfile() {
+  return (dispatch) => {
+    dispatch(request());
+    userService.getProfile().then(
+      (profile) => {
+        dispatch(success(profile));
+      },
+      (error) => {
+        dispatch(failure(error.toString()));
+      }
+    );
+  };
+  function request(profile) {
+    return { type: userConstants.GETALL_REQUEST, profile };
+  }
+  function success(profile) {
+    return { type: userConstants.GETALL_SUCCESS, profile };
+  }
+  function failure(error) {
+    return { type: userConstants.GETALL_FAILURE, error };
+  }
+}
+
+export let userAuthProgress = (payload) => {
+  return { type: USER_AUTH_IN_PROGRESS, payload };
+};
+
+export let loginUser = (payload) => {
+  return { type: LOGIN_USER, payload };
+};
+
+export let fetchLoggedUser = (payload) => {
+  return { type: IDENTIFY_USER, payload };
+};
+
+export let updateLoggedUser = (payload) => {
+  return { type: UPDATE_LOGGED_USER, payload };
+};
+
+export let userLogin = (payload) => {
+  return function () {
+    localStorage.setItem("nkalari", payload.idToken);
+
+    store.dispatch(
+      userAuthProgress({
+        isAuthInProgress: true,
+      })
+    );
+    return axios
+      .post(
+        `${process.env.REACT_APP_DOMAIN}/api/users/login`,
+        {
+          phoneNumber: payload.phoneNumber,
+        },
+        {
+          headers: {
+            authorization: payload.idToken,
+          },
+        }
+      )
+      .then((response) => {
+        store.dispatch(
+          loginUser({
+            currentUser: response.data.user,
+            isAuthInProgress: false,
+            isAuthDone: true,
+          })
+        );
+        return response.data;
+      });
+  };
+};
+
+export let identifyLoggedUser = () => {
+  return function () {
+    if (localStorage.nkalari) {
+      let token = localStorage.nkalari;
+      store.dispatch(
+        userAuthProgress({ isAuthInProgress: true, isAuthDone: false })
+      );
+      return axios
+        .get(`${process.env.REACT_APP_DOMAIN}/api/users/me`, {
+          headers: { authorization: token },
+        })
+        .then((res) => {
+          if (res.data.success) {
+            console.log(res.data.user, "user identified");
+            store.dispatch(
+              fetchLoggedUser({
+                currentUser: res.data.user,
+                isAuthInProgress: false,
+                isAuthDone: true,
+              })
+            );
+          } else {
+            localStorage.removeItem("nkalari");
+          }
+        })
+        .catch((err) => {
+          localStorage.removeItem("nkalari");
+          console.log(err, "invalid user");
+        });
+    }
+  };
+};
+
+export let updateUser = (payload) => {
+  return function () {
+    const { firstName, lastName, email, gender, profileImageUrl } = payload;
+    return axios
+      .put(
+        `${process.env.REACT_APP_DOMAIN}/api/users`,
+        { firstName, lastName, email, gender, profileImageUrl },
+        {
+          headers: {
+            authorization: localStorage.getItem("nkalari"),
+          },
+        }
+      )
+      .then((response) => {
+        store.dispatch(updateLoggedUser({ currentUser: response.data.user }));
+        return response.data;
+      });
+  };
+};

@@ -3,14 +3,26 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@emotion/react": "^11.7.1",
+    "@emotion/styled": "^11.6.0",
+    "@headlessui/react": "^1.4.2",
+    "@heroicons/react": "^1.0.5",
+    "@mui/icons-material": "^5.2.5",
+    "@mui/material": "^5.2.8",
+    "@tailwindcss/postcss7-compat": "^2.0.2",
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
+    "autoprefixer": "^9.8.6",
     "axios": "^0.24.0",
+    "craco": "^0.0.3",
     "firebase": "^9.6.1",
     "history": "^5.2.0",
+    "otp-timer": "^1.1.5",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-otp-input": "^2.4.0",
+    "react-phone-input-2": "^2.14.0",
     "react-redux": "^7.2.6",
     "react-router": "^6.2.1",
     "react-router-dom": "^5.2.0",
@@ -18,6 +30,8 @@
     "redux": "^4.1.2",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.4.1",
+    "sweetalert": "^2.1.2",
+    "sweetalert2": "^11.3.5",
     "web-vitals": "^2.1.2"
   },
   "scripts": {
@@ -43,5 +57,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.2",
+    "postcss": "^8.4.5",
+    "tailwindcss": "^3.0.12"
   }
 }
