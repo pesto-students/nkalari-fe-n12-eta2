@@ -37,15 +37,14 @@ function Landing() {
     },
     step3: {
       title: 'Host your gigs',
-      heading: "Host ypur gig anytime and send notification to your followers.",
+      heading: "Host your gig anytime and send notification to your followers.",
       description: "You can also join as audience in other artist gigs.",
       img: Rectangle_5,
       alternate: false,
     },
   }
   return (
-    // __________________________TODO: ____________________
-    // Add Montserrat font to everything (body)
+   
     
     <div className="box-border bg-gradient-to-r from-red-500 to-cyan-800">
       <div className="flex flex-col">

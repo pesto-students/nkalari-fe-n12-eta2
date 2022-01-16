@@ -31,7 +31,7 @@ const Hero = ({appType, tagLine, description, mainActionText, extraActionText}) 
         </div>
         <div className="relative z-50 flex flex-col items-center justify-between h-48 lg:space-x-8 pt-7 lg:pt-0 lg:flex-row lg:justify-between lg:w-90">
           <button
-            className="pl-12 pr-24 text-2l font-semibold text-center text-white transition-all bg-purple-600 shadow-2xl lg:ml-5 hover:bg-grey-700 focus:outline-none   lg:font-medium "
+            className="pl-12 pr-12 text-2l font-semibold text-center text-white transition-all bg-purple-600 shadow-2xl lg:ml-5 hover:bg-grey-700 focus:outline-none   lg:font-medium "
             onClick={(e)=>{ e.preventDefault();
               history.push("/login")}
              }
@@ -42,8 +42,8 @@ const Hero = ({appType, tagLine, description, mainActionText, extraActionText}) 
         </div>
         
       </div>
-      <div className="z-0 flex flex-row items-start justify-center w-screen h-screen pt-20 -mb- bg-gray-50 lg:bg-white lg:mb-0 lg:w-full lg:h-96 lg:pt-0">
-          <img className="absolute left-0 lg:left-auto  lg:mr-72 lg:-mt-72" src={rectangle_1} alt=""/><img className="absolute right-0 lg:right-auto lg:ml-72 lg:-mt-64" src={rectangle_2} alt=""/>
+      <div className="z-0 flex flex-row items-start justify-center w-screen h-screen  pt-20 -mb- bg-gray-50 lg:bg-white lg:mb-0 lg:w-full lg:h-96 lg:pt-0">
+         <img className="absolute right-0 lg:right-auto lg:ml-28 lg:-mt-36" src={rectangle_2} alt=""/>
         </div>
     </div>
     </div>
