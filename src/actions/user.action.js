@@ -156,10 +156,12 @@ export let identifyLoggedUser = () => {
               })
             );
           } else {
+            console.log(localStorage.nkalari, "token removed");
             localStorage.removeItem("nkalari");
           }
         })
         .catch((err) => {
+          console.log(localStorage.nkalari, "token removed");
           localStorage.removeItem("nkalari");
           console.log(err, "invalid user");
         });
@@ -184,5 +186,21 @@ export let updateUser = (payload) => {
         store.dispatch(updateLoggedUser({ currentUser: response.data.user }));
         return response.data;
       });
+  };
+};
+
+export let getRtmToken = (payload) => {
+  return function () {
+    const { channelName } = payload;
+    return axios
+      .get(
+        `${process.env.REACT_APP_DOMAIN}/api/agora-token/rtm?channelName=${channelName}`,
+        {
+          headers: {
+            authorization: localStorage.getItem("nkalari"),
+          },
+        }
+      )
+      .then((response) => response.data.token);
   };
 };
