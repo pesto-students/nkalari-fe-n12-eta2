@@ -19,7 +19,7 @@ function DisplayProfileScreen(props) {
 
   return (
     <div className="main">
-      <Navbar className="nav-bar"></Navbar>
+      {/* <Navbar className="nav-bar"></Navbar> */}
 
       <div className="card">
         <div className="featuring">
