@@ -248,7 +248,7 @@ function CreateUserScreen(props) {
                     <OtpTimer
                       text="Resending in"
                       textColor="#fff"
-                      seconds={5}
+                      seconds={60}
                       minutes={0}
                       resend={onSignInSubmit}
                     />

@@ -11,6 +11,7 @@ import Loader from "./components/Loader";
 import { connect } from "react-redux";
 import { fetchLoggedUser, identifyLoggedUser } from "./actions/user.action";
 import { Redirect } from "react-router-dom";
+import LiveStream from "./components/LiveStreaming";
 
 function publicRoutes() {
   return (
@@ -18,7 +19,10 @@ function publicRoutes() {
       <Switch>
         <Route exact path="/" component={Landing} />
         <Route exact path="/login" component={Login} />
-        <Redirect from="*" to="/login" />
+        {/* <Redirect from="*" to="/login" /> */}
+        <Route path="*">
+          <h1>404 error- Rout not found</h1>
+        </Route>
       </Switch>
     </>
   );
@@ -39,6 +43,7 @@ function privateRoutes(user) {
         <Route exact path="/profile" component={Profile} />
         <Route exact path="/wallet" component={Wallet} />
         <Route exact path="/recharge" component={RechargePage} />
+        <Route exact path="/livestream" component={LiveStream} />
         <Redirect from="*" to="/profile" />
       </Switch>
     </>
