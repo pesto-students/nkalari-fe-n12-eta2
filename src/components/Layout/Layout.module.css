@@ -4,5 +4,6 @@ main{
     rgb(240, 86, 123),
     rgb(255, 152, 77)
   );
+  background-attachment: fixed;
 
 }

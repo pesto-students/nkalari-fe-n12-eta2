@@ -33,6 +33,7 @@
     "redux": "^4.1.2",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.4.1",
+    "rxjs": "^7.5.2",
     "sweetalert": "^2.1.2",
     "sweetalert2": "^11.3.5",
     "web-vitals": "^2.1.2"

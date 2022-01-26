@@ -15,3 +15,12 @@ body {
   text-align: center;
   font-family: "DM Sans", sans-serif !important;
 }
+
+
+.primary-btn{
+  @apply rounded-xl px-6 py-4 text-xl uppercase bg-white text-black font-bold cursor-pointer;
+}
+
+*{
+  box-sizing: border-box;
+}
