@@ -1,9 +1,5 @@
 main{
-  background: linear-gradient(
-    rgb(159, 119, 255),
-    rgb(240, 86, 123),
-    rgb(255, 152, 77)
-  );
   background-attachment: fixed;
+  @apply bg-gradient-to-r from-violet-500 via-rose-500 to-amber-500
 
 }

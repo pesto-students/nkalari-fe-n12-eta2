@@ -21,6 +21,10 @@ body {
   @apply rounded-xl px-6 py-4 text-xl uppercase bg-white text-black font-bold cursor-pointer;
 }
 
+.special-btn{
+  @apply bg-gradient-to-r from-violet-500 via-rose-500 to-amber-500 rounded-xl px-6 py-4 text-2xl uppercase text-black font-bold cursor-pointer;
+}
+
 *{
   box-sizing: border-box;
 }
