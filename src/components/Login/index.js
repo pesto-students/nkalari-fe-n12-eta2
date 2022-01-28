@@ -4,7 +4,7 @@ import firebase from "../../helpers/firebase";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import { useDispatch } from "react-redux";
-import { userAuthProgress, userLogin } from "../../actions/user.action";
+import { userActions, userAuthProgress, userLogin } from "../../actions/user.action";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/bootstrap.css";
 import OtpInput from "react-otp-input";
@@ -16,6 +16,12 @@ import Typography from "@mui/material/Typography";
 import OtpTimer from "otp-timer";
 
 const useState = React.useState;
+
+const actionCreators = {
+  getProfile: userActions.getProfile,
+};
+
+
 
 function Login(props) {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -57,6 +63,9 @@ function CreateUserScreen(props) {
       return true;
     }
   }
+
+
+
 
   // function phoneNumberIsValid(phoneNumber) {
   //   const number = phoneNumber.trim().replaceAll(" ", "");
@@ -150,6 +159,7 @@ function CreateUserScreen(props) {
               .then((data) => {
                 if (data.isOnboardingDone) {
                   console.log("onboarding done");
+                  actionCreators.getProfile();
                   history.push("/wallet");
                 } else {
                   console.log("onboarding not done");

@@ -16,7 +16,7 @@ class Wallet extends Component {
   render() {
     return (
       <div className="main">
-        <Navbar className="nav-bar"></Navbar>
+        {/* <Navbar className="nav-bar"></Navbar> */}
         <h2 className="heading m-5">Wallet</h2>
 
         <div className="container">
