@@ -26,6 +26,7 @@ body {
   @apply bg-gradient-to-br from-sky-400 to-blue-500 rounded-xl px-6 py-4 text-2xl uppercase text-black font-bold cursor-pointer;
 }
 
+
 .headline-font{
   font-family: 'Overlock', cursive;
 }

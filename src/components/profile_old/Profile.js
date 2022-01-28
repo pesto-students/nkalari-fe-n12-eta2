@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "./index.css";
 import Navbar from "../navbar/Navbar";
-import { userActions } from "./../../actions/user.action";
+import { userActions } from "../../actions/user.action";
 import { connect, useSelector } from "react-redux";
 
 function Profile(props) {
