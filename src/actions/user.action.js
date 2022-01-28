@@ -13,6 +13,7 @@ export const userActions = {
   getTransactions,
   Signup,
   getProfile,
+  logout,
 };
 
 function getTransactions() {
@@ -202,5 +203,13 @@ export let getRtmToken = (payload) => {
         }
       )
       .then((response) => response.data.token);
+  };
+};
+
+// logout current user
+export let logout = () => {
+  return () => {
+    localStorage.clear();
+    window.location.href = "/";
   };
 };

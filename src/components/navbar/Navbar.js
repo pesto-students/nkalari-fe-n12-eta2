@@ -1,18 +1,31 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import home from "./../../images/home.png";
 import wallet from "./../../images/wallet.png";
 import profile from "./../../images/profile.png";
 import { NavLink, useHistory } from "react-router-dom";
-import { useSelector, useStore } from "react-redux";
+import { useDispatch, useSelector, useStore } from "react-redux";
 import { DollarSign, Home, Plus } from "react-feather";
+import { userActions } from "../../actions/user.action";
 // import { useHistory } from "react-router-dom";
 
 const Navbar = () => {
   const navigate = useHistory();
-  const [isVisible, setVisible] = React.useState(false);
   const { currentUser } = useSelector((store) => {
     return store.user;
   });
+  const [profileDrop, setProfileDrop] = useState(false);
+  // toggles the dropdown menu
+  const handleProfileDrop = () => {
+    setProfileDrop(!profileDrop);
+  };
+  const dispatch = useDispatch();
+  // handles the logout
+  const handleLogout = () => {
+    dispatch(userActions.logout());
+    navigate.push("/");
+    window.location.reload();
+  };
+
   // console.log(currentUser, "<<<");
   return (
     <div class="fixed z-50 min-h-screen w-24 box-border flex flex-col bg-white/30 backdrop-blur-md shadow-md overflow-hidden justify-between items-center px-2 py-8">
@@ -41,15 +54,16 @@ const Navbar = () => {
         </div>
       </div>
 
-      <div class=" w-16 h-16 my-4 mx-2">
+      <div class="relative w-16 h-16 my-4 mx-2">
         {currentUser && (
           <img
-            class="rounded-full shadow-sm  transform hover:-translate-y-1 hover:scale-110  transition-transform ease-in duration-200 cursor-pointer w-full h-full rounded-full"
+            class="rounded-full shadow-sm cursor-pointer w-full h-full rounded-full"
             src={currentUser.profileImageUrl || profile}
             alt="user image"
-            onClick={() => navigate.push("/profile")}
+            onClick={handleProfileDrop}
           />
         )}
+        <div className="absolute w-24 h-16 bg-white"></div>
       </div>
     </div>
   );
