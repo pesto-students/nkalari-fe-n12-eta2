@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 import { ArrowLeft, ArrowRight, Plus } from "react-feather";
+import CategoryWidget from "../../UILibrary/CategoryWidget/CategoryWidget";
+import DateWidget from "../../UILibrary/DateWidget/DateWidget";
+import GigCardLarge from "../../UILibrary/GigCardLarge/GigCardLarge";
+import UserWidget from "../../UILibrary/UserWidget/UserWidget";
 import { useStream } from "../../helpers/rxjsFirestore";
 import {
   streamGigsByCategory,
@@ -8,59 +12,24 @@ import {
 
 import "./HomePage.css";
 
-// card component
-const GigCardLarge = ({ data }) => {
-  return (
-    <div className="gig-card-large mr-4 w-96 text-white rounded-xl p-4 bg-black/40 backdrop-blur">
-      <div className="thumbnail">
-        <img src={data.thumbnail} alt={data.title} />
-      </div>
-      <h2 className="text-2xl my-4 text-left">{data.title}</h2>
-      <DateWidget date={data.scheduled_at} />
-    </div>
-  );
+const categoriestable = {
+  music: "🎸 Music",
+  dance: "💃 Dance",
+  art: "🎨 Art",
+  show: "🎥 Show",
+  comedy: "😆 Comedy",
 };
+
+// card component
 
 //date component
-const DateWidget = ({ date }) => {
-  let gigDate = new Date(date);
-  const months = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sept",
-    "Oct",
-    "Nov",
-    "Dec",
-  ];
 
-  return (
-    <div className="date-wrap flex flex-row items-center">
-      <div className="py-2 px-4 rounded-xl bg-white text-black flex flex-row justify-center items-center">
-        <span className="text-xl font-bold block">{gigDate.getDate()} {months[gigDate.getMonth()]}</span>
-      </div>
-      <span className="text-4xl py-2 ml-4 text-yellow-500 block">
-        {gigDate.getHours()}:{gigDate.getMinutes()}
-      </span>
-    </div>
-  );
-};
+//User component
+//Category component
+
 
 const HomePage = () => {
   const [index, setindex] = useState(0);
-
-  const categoriestable = {
-    music: "🎸 Music",
-    dance: "💃 Dance",
-    art: "🎨 Art",
-    show: "🎥 Show",
-    comedy: "😆 Comedy",
-  };
 
   const headlines = useStream(streamHeadlineGigs(), []);
   const gigsCategoryWise = {
@@ -70,6 +39,7 @@ const HomePage = () => {
     show: useStream(streamGigsByCategory("show"), []),
     comedy: useStream(streamGigsByCategory("comedy"), []),
   };
+
 
   return (
     <div className="relative home-wrap w-full bg-black/60">
@@ -84,13 +54,13 @@ const HomePage = () => {
             >
               <div className="absolute bottom-32 left-32 flex justify-between items-end">
                 <div className="details z-20 rounded-xl p-6 text-white w-2/5 text-left">
-                  <div className="text-xl category bg-white text-black rounded-full px-4 py-2 inline-block mb-6">
-                    {categoriestable[gig.category]}
-                  </div>
-                  <br />
-                  <h1 className="text-8xl inline-block">
+                  <h1 className="text-8xl font-black headline-font inline-block">
                     {gig.title}
                   </h1>
+                  <div className="info-deets flex flex-row my-6">
+                    <UserWidget data={gig.host_user} />
+                    <CategoryWidget category={categoriestable[gig.category]} />
+                  </div>
                   <p className="text-xl my-6 opacity-60">{gig.desc}</p>
                   <div className="info flex flex-row justify-between">
                     <DateWidget date={gig.scheduled_at} />

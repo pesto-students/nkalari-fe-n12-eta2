@@ -16,8 +16,8 @@ const Navbar = () => {
   // console.log(currentUser, "<<<");
   return (
     <div class="fixed z-50 min-h-screen w-24 box-border flex flex-col bg-white/30 backdrop-blur-md shadow-md overflow-hidden justify-between items-center px-2 py-8">
-      <div className="logo">
-        <span className="text-4xl text-white text-bold">K</span>
+      <div className="logo bg-white w-16 h-16 rounded-xl shadow-xl grid items-center">
+        <span className="text-5xl text-transparent bg-clip-text bg-gradient-to-tl from-violet-500 via-rose-500 to-amber-500 headline-font text-white font-black">k</span>
       </div>
       <div className="actions">
         <div
