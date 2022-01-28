@@ -265,7 +265,7 @@ function CreateUserScreen(props) {
         title={
           <React.Fragment>
             <Typography color="white">
-              <em>Click me for sample phone number.</em>
+              <em>Click me for sample phone number &amp; use "123456" as the OTP.</em>
             </Typography>
           </React.Fragment>
         }

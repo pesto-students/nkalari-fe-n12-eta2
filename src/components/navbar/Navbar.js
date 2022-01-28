@@ -4,9 +4,12 @@ import wallet from "./../../images/wallet.png";
 import profile from "./../../images/profile.png";
 import { useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
+import {logout} from "../../actions/user.action"
+import { useDispatch } from "react-redux";
 
 function Navbar() {
   const history = useHistory();
+  const dispatch = useDispatch();
   const [isVisible, setVisible] = React.useState(false);
   const { currentUser } = useSelector((store) => store.user);
   return (
@@ -37,6 +40,14 @@ function Navbar() {
             src={currentUser.profileImageUrl || profile}
             alt="user image"
             onClick={() => history.push("/profile")}
+          />
+        </div>
+        <div class=" w-16 h-16 my-4 mx-2">
+          <img
+            class="rounded-full shadow-sm  transform hover:-translate-y-1 hover:scale-110  transition-transform ease-in duration-200 cursor-pointer w-full h-full rounded-full"
+            src={ profile}
+            alt="user image"
+            onClick={() => dispatch(logout())}
           />
         </div>
       </div>

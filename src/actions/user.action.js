@@ -13,6 +13,8 @@ export const userActions = {
   getTransactions,
   Signup,
   getProfile,
+  stripeCheckout,
+  // logout
 };
 
 function getTransactions() {
@@ -78,6 +80,29 @@ function getProfile() {
   }
   function success(profile) {
     return { type: userConstants.GETALL_SUCCESS, profile };
+  }
+  function failure(error) {
+    return { type: userConstants.GETALL_FAILURE, error };
+  }
+}
+
+function stripeCheckout(){
+  return (dispatch) => {
+    dispatch(request());
+    userService.stripeCheckout().then(
+      (response) => {
+        dispatch(success(response));
+      },
+      (error) => {
+        dispatch(failure(error.toString()));
+      }
+    );
+  };
+  function request(response) {
+    return { type: userConstants.GETALL_REQUEST, response };
+  }
+  function success(response) {
+    return { type: userConstants.GETALL_SUCCESS, response };
   }
   function failure(error) {
     return { type: userConstants.GETALL_FAILURE, error };
@@ -186,3 +211,13 @@ export let updateUser = (payload) => {
       });
   };
 };
+
+export let logout = () => {
+  return function(){
+    localStorage.clear();
+    window.location.href = '/';
+  }
+  
+}
+
+
