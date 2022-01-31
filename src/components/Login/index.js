@@ -4,7 +4,11 @@ import firebase from "../../helpers/firebase";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import { useDispatch } from "react-redux";
-import { userActions, userAuthProgress, userLogin } from "../../actions/user.action";
+import {
+  userActions,
+  userAuthProgress,
+  userLogin,
+} from "../../actions/user.action";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/bootstrap.css";
 import OtpInput from "react-otp-input";
@@ -20,8 +24,6 @@ const useState = React.useState;
 const actionCreators = {
   getProfile: userActions.getProfile,
 };
-
-
 
 function Login(props) {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -63,9 +65,6 @@ function CreateUserScreen(props) {
       return true;
     }
   }
-
-
-
 
   // function phoneNumberIsValid(phoneNumber) {
   //   const number = phoneNumber.trim().replaceAll(" ", "");
@@ -160,7 +159,7 @@ function CreateUserScreen(props) {
                 if (data.isOnboardingDone) {
                   console.log("onboarding done");
                   actionCreators.getProfile();
-                  history.push("/wallet");
+                  history.push("/home");
                 } else {
                   console.log("onboarding not done");
                   history.push("/onboarding");
@@ -188,108 +187,141 @@ function CreateUserScreen(props) {
   };
 
   return (
-    <div className="container">
-      <div className="text-box column">
-        <div className="overlay">
-          <h2>
-            Host your gigs and Increase your reach to a better relevant audience
+    <div className="login-wrap relative flex flex-row w-full h-full bg-gradient-to-b from-violet-500 via-rose-500 to-amber-500">
+      <img
+        className="overlay-image absolute top-0 left-0 opacity-40"
+        src="https://res.cloudinary.com/kalari/image/upload/v1643364402/alexander-popov-hTv8aaPziOQ-unsplash_ywktfe.jpg"
+        alt="login-default"
+      />
+      <div className="text-box z-10 px-16 text-left text-white w-1/2 flex flex-col justify-around">
+        <div className="logo-full flex flex-row items-center">
+          <div className="logo bg-white w-16 h-16 rounded-xl shadow-xl grid items-center">
+            <span className="text-5xl text-center text-transparent bg-clip-text bg-gradient-to-tl from-violet-500 via-rose-500 to-amber-500 headline-font text-white font-black">
+              k
+            </span>
+          </div>
+          <div className="logo-type ml-6 headline-font text-5xl font-black">
+            kalari
+          </div>
+        </div>
+        <div>
+          <h2 className="text-8xl inline-block font-black">
+            Showcase your talent.
+          </h2>
+          <br />
+          <br />
+          <h2 className="text-8xl text-transparent bg-clip-text bg-gradient-to-br from-sky-400 to-blue-500 inline-block font-black">
+            Create communities.
           </h2>
         </div>
       </div>
-      <div className="login-box column">
-        <img src={require("./../../images/N.png")}></img>
-        <h2>{showOtpInput ? "Enter OTP" : "Login"}</h2>
-        {!showOtpInput ? (
-          <form onSubmit={handleSubmit}>
-            <div className="form-group">
-              <PhoneInput
-                country={"in"}
-                value={phoneNumber}
-                enableSearch={true}
-                placeholder="Enter your mobile number"
-                inputProps={{
-                  name: "phone",
-                  required: true,
-                  enableSearch: true,
-                }}
-                inputStyle={{
-                  background: "#2e25259f",
-                  color: "white",
-                  border: "none",
-                }}
-                onChange={(phone) => setPhoneNumber(phone)}
-              />
+      <div className="login-box z-10 w-1/2 grid place-items-center">
+        <div className="bg-white/40 relative backdrop-blur p-12 rounded-2xl">
+          <h2 className="text-6xl flex justify-between my-6 text-left">
+            {showOtpInput ? "Enter OTP" : "Login"}
+            <div className="test-setting">
+            <Tooltip
+              title={
+                <React.Fragment>
+                  <Typography color="white">
+                    <em>Click me for sample phone number.</em>
+                  </Typography>
+                </React.Fragment>
+              }
+              onClick={(e) => {
+                e.preventDefault();
+                setPhoneNumber("+919999999999");
+              }}
+              // style={{
+              //   position: "absolute",
+              //   right: "0",
+              //   left: "70%",
+              //   bottom: "60%",
+              // }}
+            >
+              <IconButton>
+                <InfoIcon />
+              </IconButton>
+            </Tooltip>
+          </div>
+          </h2>
 
-              <small className="error">{phoneNumberError}</small>
-            </div>
-            <div className="form-group">
-              <button
-                className="bg-indigo-700 w-1/3"
-                type="submit"
-                disabled={phoneNumber.length > 9 ? false : true}
-              >
-                Submit
-              </button>
-            </div>
-          </form>
-        ) : (
-          <form onSubmit={onSubmitOTP}>
-            <div className="form-group">
-              <OtpInput
-                className="OtpInput"
-                value={otp}
-                onChange={(otp) => setOtp(otp)}
-                numInputs={6}
-                shouldAutoFocus={true}
-              />
-              <small className="error">{otpError}</small>
-            </div>
-            <div className="form-group">
-              <div className="flex items-center">
-                <button
-                  className="bg-indigo-600 w-1/3"
-                  type="submit"
-                  disabled={otp.length > 5 ? false : true}
-                >
-                  Login
-                </button>
-                {resendOtp ? (
-                  <div className="resend-timer">
-                    <OtpTimer
-                      text="Resending in"
-                      textColor="#fff"
-                      seconds={60}
-                      minutes={0}
-                      resend={onSignInSubmit}
-                    />
-                  </div>
-                ) : (
-                  <div></div>
-                )}
+          
+
+          {!showOtpInput ? (
+            <form onSubmit={handleSubmit}>
+              <div className="form-group">
+                <PhoneInput
+                  country={"in"}
+                  value={phoneNumber}
+                  enableSearch={true}
+                  placeholder="Enter your mobile number"
+                  inputProps={{
+                    name: "phone",
+                    required: true,
+                    enableSearch: true,
+                  }}
+                  inputStyle={{
+                    background: "#2e25259f",
+                    color: "white",
+                    border: "none",
+                  }}
+                  onChange={(phone) => setPhoneNumber(phone)}
+                />
+
+                <small className="error">{phoneNumberError}</small>
               </div>
-            </div>
-          </form>
-        )}
+              <div className="form-group">
+                <button
+                  className={`primary-btn bg-white w-full ${phoneNumber.length > 9 ? "" : "opacity-50 pointer-events-none"}`}
+                  type="submit"
+                  disabled={phoneNumber.length > 9 ? false : true}
+                >
+                  Submit
+                </button>
+              </div>
+            </form>
+          ) : (
+            <form onSubmit={onSubmitOTP}>
+              <div className="form-group">
+                <OtpInput
+                  className="OtpInput"
+                  value={otp}
+                  onChange={(otp) => setOtp(otp)}
+                  numInputs={6}
+                  shouldAutoFocus={true}
+                />
+                <small className="error">{otpError}</small>
+              </div>
+              <div className="form-group">
+                <div className="flex items-center">
+                  <button
+                    className="bg-indigo-600 w-1/3"
+                    type="submit"
+                    disabled={otp.length > 5 ? false : true}
+                  >
+                    Login
+                  </button>
+                  {resendOtp ? (
+                    <div className="resend-timer">
+                      <OtpTimer
+                        text="Resending in"
+                        textColor="#fff"
+                        seconds={60}
+                        minutes={0}
+                        resend={onSignInSubmit}
+                      />
+                    </div>
+                  ) : (
+                    <div></div>
+                  )}
+                </div>
+              </div>
+            </form>
+          )}
+        </div>
+        <div id="sign-in-button"></div>
       </div>
-      <Tooltip
-        title={
-          <React.Fragment>
-            <Typography color="white">
-              <em>Click me for sample phone number.</em>
-            </Typography>
-          </React.Fragment>
-        }
-        onClick={(e) => {
-          e.preventDefault();
-          setPhoneNumber("+919999999999");
-        }}
-        style={{ position: "absolute", right: "0", left: "70%", bottom: "60%" }}
-      >
-        <IconButton>
-          <InfoIcon />
-        </IconButton>
-      </Tooltip>
-      <div id="sign-in-button"></div>
     </div>
   );
 }

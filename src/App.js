@@ -2,7 +2,7 @@ import "./App.css";
 import React, { Component } from "react";
 import { Wallet } from "./components/wallet/Wallet";
 import { Route, Switch, BrowserRouter } from "react-router-dom";
-import Profile from "./components/profile/Profile";
+// import Profile from "./components/profile/Profile";
 import Login from "./components/Login";
 import Onboarding from "./components/Onboarding";
 import RechargePage from "./components/Recharge";
@@ -15,6 +15,7 @@ import { Redirect } from "react-router-dom";
 import HomePage from "./components/HomePage/HomePage";
 import Layout from "./components/Layout/Layout";
 import NewGig from "./components/NewGig/NewGig";
+import ProfilePage from "./components/ProfilePage/ProfilePage";
 
 function publicRoutes() {
   return (
@@ -36,7 +37,7 @@ function privateRoutes(user) {
     return (
       <Switch>
         <Route exact path="/onboarding" component={Onboarding} />
-        <Redirect from="*" to="/onboarding" />
+        {/* <Redirect from="*" to="/onboarding" /> */}
       </Switch>
     );
   }
@@ -53,11 +54,11 @@ function privateRoutes(user) {
         <Switch>
           <Route exact path="/home" component={HomePage} />
           <Route exact path="/newgig" component={NewGig} />
-          <Route exact path="/profile" component={Profile} />
+          <Route exact path="/profile" component={ProfilePage} />
           <Route exact path="/wallet" component={Wallet} />
           <Route exact path="/recharge" component={RechargePage} />
           {/* <Route exact path="/livestream" component={LiveStream} /> */}
-          <Redirect from="*" to="/profile" />
+          {/* <Redirect from="*" to="/profile" /> */}
         </Switch>
       </Layout>
     </>

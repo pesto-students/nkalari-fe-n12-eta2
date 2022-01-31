@@ -205,6 +205,15 @@ export let getRtmToken = (payload) => {
   };
 };
 
+// logout current user
+export const logout = () => {
+  return () => {
+    localStorage.clear();
+    // window.location.href = "/";
+    };
+};
+
+
 export let getRtcToken = (payload) => {
   return function () {
     const { channelName, role } = payload;
