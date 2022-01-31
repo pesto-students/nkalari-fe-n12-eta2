@@ -58,11 +58,31 @@ const NewGig = () => {
     return store.user;
   });
 
+  // add current user to all docs in gigs collection
+  const addUserToGig = async (gig) => {
+    const db = getFirestore();
+    const gigs = db.collection("gigs");
+    // get all docs in the collection and loop over them
+    const docs = await gigs.get();
+    docs.forEach((doc) => {
+      // add the user to the doc
+      const data = doc.data();
+      data.host_user = currentUser;
+      // update the doc
+      gigs.doc(doc.id).set(data);
+      console.log("SET DATA", data);
+    });
+  };
+
   const handleSubmit = async () => {
     //TODO validation
     //add data to firestore collection after vakidation
     if (validate()) {
-      const payload = formData;
+      const payload = {
+        // add currentuser
+        host_user: currentUser,
+        ...formData,
+      };
       try {
         addNewGig(payload);
         // reset formData
@@ -95,7 +115,7 @@ const NewGig = () => {
 
   return (
     <div className="newgig-wrap my-12 ml-32 px-6">
-      <h1 className="relative z-10 text-5xl text-left">New Gig</h1>
+      <h1 className="relative z-10 text-5xl text-left" onClick={()=>addUserToGig()}>New Gig</h1>
 
       {/* display all the errors */}
       {errors.length > 0 && (
@@ -113,7 +133,6 @@ const NewGig = () => {
           })}
         </div>
       )}
-
 
       <form className="relative mt-96 w-full z-10">
         <label htmlFor="thumbnail">
@@ -245,14 +264,17 @@ const NewGig = () => {
         </div>
       </form>
 
-      <div className="thumbnail-preview opacity-70 fixed top-0 left-0 w-full h-screen">
+      <div className="thumbnail-preview opacity-40 fixed top-0 left-0 w-full h-screen">
         <img
-          src={formData.thumbnail==='' ? 'https://res.cloudinary.com/kalari/image/upload/v1643159224/sample.jpg' : formData.thumbnail}
+          src={
+            formData.thumbnail === ""
+              ? "https://res.cloudinary.com/kalari/image/upload/v1643159224/sample.jpg"
+              : formData.thumbnail
+          }
           alt="thumbnail"
           className="w-full h-full object-cover"
         />
       </div>
-
     </div>
   );
 };

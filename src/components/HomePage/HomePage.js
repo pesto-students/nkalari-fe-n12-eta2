@@ -11,6 +11,7 @@ import {
 } from "../../services/gigs.service";
 
 import "./HomePage.css";
+import { useSelector } from "react-redux";
 
 const categoriestable = {
   music: "🎸 Music",
@@ -40,6 +41,11 @@ const HomePage = () => {
     comedy: useStream(streamGigsByCategory("comedy"), []),
   };
 
+  // get current user from store
+  const  currentUser  = useSelector((store) => {
+    return store.user;
+  });
+
 
   return (
     <div className="relative home-wrap w-full bg-black/60">
@@ -52,18 +58,18 @@ const HomePage = () => {
                 index === i ? "" : "hidden"
               }`}
             >
-              <div className="absolute bottom-32 left-32 flex justify-between items-end">
+              <div className="absolute w-11/12 bottom-32 left-32 flex justify-between items-end">
                 <div className="details z-20 rounded-xl p-6 text-white w-2/5 text-left">
                   <h1 className="text-8xl font-black headline-font inline-block">
                     {gig.title}
                   </h1>
                   <div className="info-deets flex flex-row my-6">
-                    <UserWidget data={gig.host_user} />
+                    <UserWidget data={gig.host_user === "" ? currentUser : gig.host_user} />
                     <CategoryWidget category={categoriestable[gig.category]} />
                   </div>
-                  <p className="text-xl my-6 opacity-60">{gig.desc}</p>
+                  {/* <p className="text-xl my-6 opacity-60">{gig.desc}</p> */}
                   <div className="info flex flex-row justify-between">
-                    <DateWidget date={gig.scheduled_at} />
+                    <DateWidget date={gig.date} />
                     <div className="join">
                       <div className="special-btn flex items-center">
                         <Plus /> &ensp; JOIN
