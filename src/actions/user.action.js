@@ -210,5 +210,22 @@ export const logout = () => {
   return () => {
     localStorage.clear();
     // window.location.href = "/";
+    };
+};
+
+
+export let getRtcToken = (payload) => {
+  return function () {
+    const { channelName, role } = payload;
+    return axios
+      .get(
+        `${process.env.REACT_APP_DOMAIN}/api/agora-token/rtc?channelName=${channelName}&&role=${role}`,
+        {
+          headers: {
+            authorization: localStorage.getItem("nkalari"),
+          },
+        }
+      )
+      .then((response) => response.data.token);
   };
 };
