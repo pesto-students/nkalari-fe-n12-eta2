@@ -11,7 +11,7 @@ import Loader from "./components/Loader";
 import { connect } from "react-redux";
 import { fetchLoggedUser, identifyLoggedUser } from "./actions/user.action";
 import { Redirect } from "react-router-dom";
-// import LiveStream from "./components/LiveStreaming";
+import LiveStream from "./components/LiveStreaming";
 import HomePage from "./components/HomePage/HomePage";
 import Layout from "./components/Layout/Layout";
 import NewGig from "./components/NewGig/NewGig";
@@ -57,7 +57,7 @@ function privateRoutes(user) {
           <Route exact path="/profile" component={ProfilePage} />
           <Route exact path="/wallet" component={Wallet} />
           <Route exact path="/recharge" component={RechargePage} />
-          {/* <Route exact path="/livestream" component={LiveStream} /> */}
+          <Route exact path="/livestream" component={LiveStream} />
           {/* <Redirect from="*" to="/profile" /> */}
         </Switch>
       </Layout>

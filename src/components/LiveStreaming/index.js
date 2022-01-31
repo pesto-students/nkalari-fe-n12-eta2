@@ -38,9 +38,8 @@ const LiveStream = () => {
   }, []);
 
   return (
-    <div className="main">
-      <Navbar className="nav-bar"></Navbar>
-      Hello LiveStream {currentUser.firstName} {currentUser.lastName}
+    <div className="main w-full">
+      {/* <Navbar className="nav-bar"></Navbar> */}
       {rtmToken && rtcToken && channelName && (
         <Comments
           rtmToken={rtmToken}
