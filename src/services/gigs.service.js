@@ -59,7 +59,7 @@ const gigsRef = collection(db, "gigs");
 // };
 
 export const streamHeadlineGigs = () => {
-  let q = query(gigsRef, orderBy("scheduled_at", "asc"), limit(3));
+  let q = query(gigsRef, orderBy("date", "asc"), limit(3));
   return ObservableFromQuery(q).pipe(
     map((snapshot) => snapshot.docs),
     map((docs) => docs.map(docData)),

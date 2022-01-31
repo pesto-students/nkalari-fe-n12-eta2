@@ -15,7 +15,7 @@ const GigCardLarge = ({ data }) => {
         {/* <CategoryWidget category={categoriestable[data.category]} /> */}
       </div>
       <div className="flex flex-row justify-between">
-      <DateWidget date={data.scheduled_at} />
+      <DateWidget date={data.date} />
       <div className="special-btn"><Plus/></div>
       </div>
     </div>
