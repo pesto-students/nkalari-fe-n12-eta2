@@ -22,7 +22,7 @@ body {
 }
 
 .special-btn {
-  @apply bg-gradient-to-br from-sky-400 to-blue-500 rounded-xl px-6 py-4 text-2xl uppercase text-black font-bold cursor-pointer;
+  @apply bg-gradient-to-br from-sky-400 to-blue-500 rounded-xl px-6 py-4 text-2xl uppercase text-white font-bold cursor-pointer;
 }
 
 .headline-font {

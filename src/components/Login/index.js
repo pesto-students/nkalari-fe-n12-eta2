@@ -211,7 +211,7 @@ function CreateUserScreen(props) {
           <br />
           <br />
           <h2 className="text-8xl text-transparent bg-clip-text bg-gradient-to-br from-sky-400 to-blue-500 inline-block font-black">
-            Creat communities.
+            Create communities.
           </h2>
         </div>
       </div>

@@ -37,7 +37,7 @@ function privateRoutes(user) {
     return (
       <Switch>
         <Route exact path="/onboarding" component={Onboarding} />
-        <Redirect from="*" to="/onboarding" />
+        {/* <Redirect from="*" to="/onboarding" /> */}
       </Switch>
     );
   }
@@ -58,7 +58,7 @@ function privateRoutes(user) {
           <Route exact path="/wallet" component={Wallet} />
           <Route exact path="/recharge" component={RechargePage} />
           {/* <Route exact path="/livestream" component={LiveStream} /> */}
-          <Redirect from="*" to="/profile" />
+          {/* <Redirect from="*" to="/profile" /> */}
         </Switch>
       </Layout>
     </>

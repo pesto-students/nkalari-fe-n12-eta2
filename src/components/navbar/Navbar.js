@@ -60,7 +60,7 @@ const Navbar = () => {
       <div class="relative w-16 h-16 my-4 mx-2">
         {currentUser && (
           <img
-            class="rounded-full shadow-sm cursor-pointer w-full h-full rounded-full"
+            class="shadow-xl cursor-pointer w-full h-full rounded-xl"
             src={currentUser.profileImageUrl || profile}
             alt="user image"
             onClick={handleProfileDrop}
@@ -79,7 +79,7 @@ const Navbar = () => {
               My Profile
             </div>
             <div
-              className="logout px-4 py-2 rounded-xl cursor-pointer hover:bg-slate-200"
+              className="logout text-rose-500 px-4 py-2 rounded-xl cursor-pointer hover:bg-slate-200"
               onClick={handleLogout}
             >
               Logout

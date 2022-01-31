@@ -1,5 +1,6 @@
 main{
   background-attachment: fixed;
+  z-index: 0;
   @apply bg-gradient-to-b from-violet-500 via-rose-500 to-amber-500
 
 }
