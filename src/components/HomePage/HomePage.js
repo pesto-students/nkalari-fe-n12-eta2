@@ -12,6 +12,7 @@ import {
 
 import "./HomePage.css";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const categoriestable = {
   music: "🎸 Music",
@@ -60,9 +61,9 @@ const HomePage = () => {
             >
               <div className="absolute w-11/12 bottom-32 left-32 flex justify-between items-end">
                 <div className="details z-20 rounded-xl p-6 text-white w-2/5 text-left">
-                  <h1 className="text-8xl font-black headline-font inline-block">
+                  <Link to={`/gig/${gig.id}`} className="text-8xl hover:underline font-black headline-font inline-block">
                     {gig.title}
-                  </h1>
+                  </Link>
                   <div className="info-deets flex flex-row my-6">
                     <UserWidget data={gig.host_user === "" ? currentUser : gig.host_user} />
                     <CategoryWidget category={categoriestable[gig.category]} />
@@ -71,9 +72,9 @@ const HomePage = () => {
                   <div className="info flex flex-row justify-between">
                     <DateWidget date={gig.date} />
                     <div className="join">
-                      <div className="special-btn flex items-center">
+                      <Link to={`/livestream/${gig.id}`} className="special-btn flex items-center">
                         <Plus /> &ensp; JOIN
-                      </div>
+                      </Link>
                     </div>
                   </div>
                 </div>

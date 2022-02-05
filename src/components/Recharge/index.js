@@ -8,9 +8,9 @@ import RechargePack from "./RechargePack";
 const RechargePage = () => {
   return (
     <div className="main">
-      <Navbar className="nav-bar"></Navbar>
+      {/* <Navbar className="nav-bar"></Navbar> */}
 
-      <div className="container py-2">
+      <div className="container pl-32 py-2">
         <div className="left-side">
           <h2 className="heading m-5 ">Recharge</h2>
 

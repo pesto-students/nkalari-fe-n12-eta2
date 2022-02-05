@@ -93,6 +93,8 @@ const NewGig = () => {
           date: "",
           category: "",
         });
+        // navigate to home page
+        window.location.href = "/home";
       } catch (e) {
         console.error("Error adding document: ", e);
       }
