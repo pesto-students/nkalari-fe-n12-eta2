@@ -86,10 +86,10 @@ function getProfile() {
   }
 }
 
-function stripeCheckout() {
+function stripeCheckout(price_id) {
   return (dispatch) => {
     dispatch(request());
-    userService.stripeCheckout().then(
+    userService.stripeCheckout(price_id).then(
       (response) => {
         dispatch(success(response));
       },

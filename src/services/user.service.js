@@ -51,7 +51,7 @@ async function getProfile() {
   return await handleResponse(response);
 }
 
-async function stripeCheckout() {
+async function stripeCheckout(price_id) {
   const requestOptions = {
     method: "POST",
     headers: {
@@ -63,7 +63,7 @@ async function stripeCheckout() {
   };
 
   const response = await fetch(
-    `${process.env.REACT_APP_DOMAIN}/api/transactions/create-stripe-api`,
+    `${process.env.REACT_APP_DOMAIN}/api/transactions/create-stripe-api?price_id=`+price_id,
     requestOptions
   );
 
