@@ -136,7 +136,7 @@ function Wallet(props) {
   // const chart = new Chart(ctx, config);
 
   return (
-    <main class="container mx-w-6xl mx-auto py-4 ml-28">
+    <main class="mx-w-6xl mx-auto py-4 ml-28">
       <div class="flex flex-col space-y-8">
         <div class="grid grid-cols-1 md:grid-cols-4 xl:grid-cols-5 px-4 xl:p-0 gap-y-4 md:gap-6">
           <div class="md:col-span-2 xl:col-span-3 bg-gray-800 bg-opacity-60 p-6 rounded-2xl ">
