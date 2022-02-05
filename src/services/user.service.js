@@ -56,7 +56,7 @@ async function stripeCheckout(price_id) {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "Access-Control-Allow-Origin": "https://nkalari-8f0ee.web.app/",
+      "Access-Control-Allow-Origin": "*",
       "Access-Control-Allow-Methods": "GET, POST, PUT",
       "Access-Control-Allow-Headers": "Content-Type",
     } /* Give the required headers here */,

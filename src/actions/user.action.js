@@ -99,13 +99,13 @@ function stripeCheckout(price_id) {
     );
   };
   function request(response) {
-    return { type: userConstants.GETALL_REQUEST, response };
+    return { type: userConstants.STRIPE_REQUEST, response };
   }
   function success(response) {
-    return { type: userConstants.GETALL_SUCCESS, response };
+    return { type: userConstants.STRIPE_SUCCESS, response };
   }
   function failure(error) {
-    return { type: userConstants.GETALL_FAILURE, error };
+    return { type: userConstants.STRIPE_FAILURE, error };
   }
 }
 

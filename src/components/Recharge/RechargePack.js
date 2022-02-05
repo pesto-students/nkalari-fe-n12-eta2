@@ -1,10 +1,10 @@
-import React from "react";
+import { React, useEffect } from "react";
 import Diamonds from "./../../images/Diamonds.png";
 import {userActions} from "./../../actions/user.action";
 import { connect } from "react-redux";
 
 
-function handleOnclick( props){
+function handleOnclick(props){
   let price_id = "";
   console.log("Props",props);
   switch(props.amount) {
@@ -20,11 +20,16 @@ function handleOnclick( props){
     default:
       price_id = 'price_1KP0XbSAIpv25iqw9gmrDHkA';
   }
- console.log("price",price_id); 
+  console.log("price",price_id); 
   props.stripeCheckout(price_id);
-
 }
+
 const RechargePack = (props) => {
+
+  useEffect(() => {
+    if(props.url) 
+      window.location.href = props.url
+  }, [props.url])
   return (
     <div className="bg-white bg-opacity-20 shadow rounded-2xl w-72 flex flex-col items-center justify-center p-2 recharge-pack my-8 hover:bg-opacity-50 cursor-pointer" onClick={()=>handleOnclick( props)}>
       <p className="text-6xl font-semibold text-center text-white">
@@ -38,8 +43,8 @@ const RechargePack = (props) => {
 
 function mapState(state) {
   console.log("state", state);
-  // const { transactions } = state.getTransactions;
-  return {  };
+  const { url } = state.getTransactions;
+  return { url };
 }
 
 const actionCreators = {
