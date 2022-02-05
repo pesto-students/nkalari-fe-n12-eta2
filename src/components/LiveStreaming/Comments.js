@@ -321,6 +321,7 @@ const Comments = ({ rtmToken, rtcToken, channelName, isHost }) => {
               });
 
               rtc.client.on("stream-added", function (evt) {
+                setIsStreamStarted(true);
                 var remoteStream = evt.stream;
                 var id = remoteStream.getId();
                 if (id !== rtc.params.uid) {
