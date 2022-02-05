@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 
 function handleOnclick( props){
   let price_id = "";
+  console.log("Props",props);
   switch(props.amount) {
     case "510":
       price_id = 'price_1KMs2uSAIpv25iqwATWyJc3L';
@@ -19,6 +20,7 @@ function handleOnclick( props){
     default:
       price_id = 'price_1KP0XbSAIpv25iqw9gmrDHkA';
   }
+ console.log("price",price_id); 
   props.stripeCheckout(price_id);
 
 }
