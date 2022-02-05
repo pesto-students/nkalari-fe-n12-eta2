@@ -220,33 +220,31 @@ function CreateUserScreen(props) {
           <h2 className="text-6xl flex justify-between my-6 text-left">
             {showOtpInput ? "Enter OTP" : "Login"}
             <div className="test-setting">
-            <Tooltip
-              title={
-                <React.Fragment>
-                  <Typography color="white">
-                    <em>Click me for sample phone number.</em>
-                  </Typography>
-                </React.Fragment>
-              }
-              onClick={(e) => {
-                e.preventDefault();
-                setPhoneNumber("+919999999999");
-              }}
-              // style={{
-              //   position: "absolute",
-              //   right: "0",
-              //   left: "70%",
-              //   bottom: "60%",
-              // }}
-            >
-              <IconButton>
-                <InfoIcon />
-              </IconButton>
-            </Tooltip>
-          </div>
+              <Tooltip
+                title={
+                  <React.Fragment>
+                    <Typography color="white">
+                      <em>Click me for sample phone number.</em>
+                    </Typography>
+                  </React.Fragment>
+                }
+                onClick={(e) => {
+                  e.preventDefault();
+                  setPhoneNumber("+919999999999");
+                }}
+                // style={{
+                //   position: "absolute",
+                //   right: "0",
+                //   left: "70%",
+                //   bottom: "60%",
+                // }}
+              >
+                <IconButton>
+                  <InfoIcon />
+                </IconButton>
+              </Tooltip>
+            </div>
           </h2>
-
-          
 
           {!showOtpInput ? (
             <form onSubmit={handleSubmit}>
@@ -273,7 +271,11 @@ function CreateUserScreen(props) {
               </div>
               <div className="form-group">
                 <button
-                  className={`primary-btn bg-white w-full ${phoneNumber.length > 9 ? "" : "opacity-50 pointer-events-none"}`}
+                  className={`primary-btn bg-white w-full ${
+                    phoneNumber.length > 9
+                      ? ""
+                      : "opacity-50 pointer-events-none"
+                  }`}
                   type="submit"
                   disabled={phoneNumber.length > 9 ? false : true}
                 >
@@ -322,6 +324,27 @@ function CreateUserScreen(props) {
         </div>
         <div id="sign-in-button"></div>
       </div>
+      <Tooltip
+        title={
+          <React.Fragment>
+            <Typography color="white">
+              <em>
+                Click me for sample phone number &amp; use "123456" as the OTP.
+              </em>
+            </Typography>
+          </React.Fragment>
+        }
+        onClick={(e) => {
+          e.preventDefault();
+          setPhoneNumber("+919999999999");
+        }}
+        style={{ position: "absolute", right: "0", left: "70%", bottom: "60%" }}
+      >
+        <IconButton>
+          <InfoIcon />
+        </IconButton>
+      </Tooltip>
+      <div id="sign-in-button"></div>
     </div>
   );
 }

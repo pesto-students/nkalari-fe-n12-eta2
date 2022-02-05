@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 import { userActions } from "./../../actions/user.action";
 import Diamonds from "./../../images/Diamonds.png";
 import Navbar from "../navbar/Navbar";
+import Stripe from "./../stripe";
+
 class Wallet extends Component {
   constructor(props) {
     super(props);
@@ -25,6 +27,8 @@ class Wallet extends Component {
               <h2 className="balance-heading">Balance </h2>
               <h2 className="balance-value">5000</h2>
             </div>
+            <Stripe></Stripe>
+
             <div className="buttons">
               <button className="withdraw">Withdraw</button>
               <button

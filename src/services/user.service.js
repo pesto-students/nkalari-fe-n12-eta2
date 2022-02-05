@@ -1,7 +1,8 @@
 export const userService = {
     getTransactions,
     Signup,
-    getProfile
+    getProfile,
+    stripeCheckout
 };
 
 async function getTransactions() {
@@ -45,6 +46,23 @@ async function getTransactions() {
       
       return await handleResponse(response);
   }
+
+  async function stripeCheckout(){
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "http://siteA.com",
+      "Access-Control-Allow-Methods": "GET, POST, PUT",
+      "Access-Control-Allow-Headers": "Content-Type" }, /* Give the required headers here */
+    };
+  
+    const response = await fetch(
+      'http://localhost:4000/api/transactions/create-stripe-api',
+      requestOptions
+    );
+    
+    return await handleResponse(response);
+  } 
 
 
 
