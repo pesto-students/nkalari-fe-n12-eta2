@@ -6,7 +6,7 @@ import UserWidget from "../UserWidget/UserWidget";
 
 const GigCardLarge = ({ data }) => {
   return (
-    <div className="gig-card-large mr-4 w-96 text-white rounded-xl p-4 bg-black/40 backdrop-blur">
+    <div className="gig-card-large mr-4 mt-4 w-96 text-white rounded-xl p-4 bg-black/40 backdrop-blur">
       <div className="thumbnail rounded-xl">
         <img src={data.thumbnail} alt={data.title} />
       </div>

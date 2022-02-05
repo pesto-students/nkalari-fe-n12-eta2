@@ -18,6 +18,7 @@ import pizza from "../../images/pizza-gift.png";
 import rose from "../../images/rose-gift.png";
 import ship from "../../images/ship-gift.png";
 import star from "../../images/star-gift.png";
+import { Gift, MessageSquare, Send, Star } from "react-feather";
 
 const gifts = [
   {
@@ -536,40 +537,59 @@ const Comments = ({ rtmToken, rtcToken, channelName, isHost }) => {
                 ))}
               </div>
             )}
-            <div className="shadow rounded-2xl text-white w-full flex items-center justify-between mt-2">
-              <div className="bg-white rounded-full h-12 w-14 p-2 flex items-center justify-center">
-                <img
-                  className={`h-full w-full ${
+            <div className="user-actions">
+              <div className="gimmicks flex text-sm">
+                <div
+                onClick={() =>
+                  !isHost ? setShowGiftsBox(!showGiftsBox) : ""
+                }
+                  className={`${
                     isHost ? "cursor-not-allowed" : "cursor-pointer"
-                  }`}
+                  } bg-black/60 hover:bg-white/60 hover:text-black border-white border text-white rounded-full py-2 px-4 flex items-center justify-center`}
+                >
+                  <Gift
+                    
+                  />
+                  &ensp; Send a gift
+                  {/* <img
+                  
                   src={diamond}
                   disabled={isHost}
                   onClick={() =>
                     !isHost ? setShowGiftsBox(!showGiftsBox) : ""
                   }
-                />
+                /> */}
+                </div>
+                <div className="cursor-pointer bg-black/60 hover:bg-white/60 hover:text-black border-white border ml-2 text-white rounded-full py-2 px-4 flex items-center justify-center">
+                  <MessageSquare />
+                  &ensp;Send a Superchat
+                </div>
               </div>
-              <div className="flex items-center w-full mx-2">
-                <input
-                  type="text"
-                  name="comment"
-                  className="bg-white shadow rounded-2xl p-2 text-black w-full mt-auto"
-                  value={comment}
-                  onChange={(e) => {
-                    setComment(e.target.value);
-                  }}
-                  onKeyDown={(e) => {
-                    if (e.keyCode === 13) {
-                      sendChannelMessage();
-                    }
-                  }}
-                />
-              </div>
-              <div
-                className="w-16 h-16 flex items-center cursor-pointer"
-                onClick={sendChannelMessage}
-              >
-                <img src={sendButton} />
+              <div className="mt-2 shadow rounded-2xl text-white w-full flex items-center justify-between mt-2">
+                <div className="flex items-center w-full mx-2">
+                  <input
+                    type="text"
+                    name="comment"
+                    className="bg-white shadow rounded-2xl p-2 text-black w-full mt-auto"
+                    value={comment}
+                    onChange={(e) => {
+                      setComment(e.target.value);
+                    }}
+                    onKeyDown={(e) => {
+                      if (e.keyCode === 13) {
+                        sendChannelMessage();
+                      }
+                    }}
+                  />
+                </div>
+                <div
+                  className="w-16 h-16 flex items-center cursor-pointer"
+                  onClick={sendChannelMessage}
+                >
+                  <div className="bg-white text-black rounded-full p-4 flex items-center justify-center">
+                    <Send />
+                  </div>
+                </div>
               </div>
             </div>
           </div>
