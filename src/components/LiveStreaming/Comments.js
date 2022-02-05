@@ -97,7 +97,6 @@ const Comments = ({ rtmToken, rtcToken, channelName, isHost }) => {
   const [isStreamStarted, setIsStreamStarted] = useState(false);
   const [showGiftsBox, setShowGiftsBox] = useState(false);
 
-
   // Params for login
   let options = {
     uid: currentUser.uid,
@@ -422,7 +421,7 @@ const Comments = ({ rtmToken, rtcToken, channelName, isHost }) => {
           (isHost ? (
             <div className="relative ml-24 h-full w-full">
               <div
-                id="local_stream"
+                id="local_stream relative"
                 className="local_stream h-full w-full"
               ></div>
               <button
@@ -435,10 +434,10 @@ const Comments = ({ rtmToken, rtcToken, channelName, isHost }) => {
             </div>
           ) : (
             <div className="relative ml-24 h-full w-full">
-              <div id="remote_video_ relative" className="h-full"></div>
+              <div id="remote_video_ relative" className="h-full w-full"></div>
 
               <button
-                className="bg-black hover:bg-gray-900 text-white text-center py-2 px-4 rounded-full absolute"
+                className="bg-black hover:bg-gray-900 text-white text-center py-2 px-4 rounded-full absolute bottom-[10px] z-50 ml-2"
                 onClick={() => leaveEventAudience("audience")}
               >
                 Leave Streaming
