@@ -234,7 +234,7 @@ export let getRtmToken = (payload) => {
 export const logout = () => {
   return () => {
     localStorage.clear();
-    // window.location.href = "/";
+    window.location.href = "/";
   };
 };
 
@@ -253,9 +253,9 @@ export let getRtcToken = (payload) => {
       .then((response) => response.data.token);
   };
 };
-export let logout = () => {
-  return function () {
-    localStorage.clear();
-    window.location.href = "/";
-  };
-};
+// export let logout = () => {
+//   return function () {
+//     localStorage.clear();
+//     window.location.href = "/";
+//   };
+// };
