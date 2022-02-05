@@ -13,6 +13,18 @@ export function getTransactions(state = {}, action) {
         case userConstants.GETALL_FAILURE:
           return {
           };
+          case userConstants.STRIPE_REQUEST:
+            return {
+            };
+
+            case userConstants.STRIPE_SUCCESS:
+              return {
+                url : action.response.url
+              };
+            
+              case userConstants.STRIPE_FAILURE:
+            return {
+            };
         default:
           return state
       }
