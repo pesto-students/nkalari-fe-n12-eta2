@@ -421,8 +421,8 @@ const Comments = ({ rtmToken, rtcToken, channelName, isHost }) => {
           (isHost ? (
             <div className="relative ml-24 h-full w-full">
               <div
-                id="local_stream relative"
-                className="local_stream h-full w-full"
+                id="local_stream"
+                className="local_stream h-full w-full relative"
               ></div>
               <button
                 className="bg-black hover:bg-gray-900 text-white text-center py-2 px-4 rounded-full absolute bottom-[10px] z-50 ml-2"
@@ -434,7 +434,7 @@ const Comments = ({ rtmToken, rtcToken, channelName, isHost }) => {
             </div>
           ) : (
             <div className="relative ml-24 h-full w-full">
-              <div id="remote_video_ relative" className="h-full w-full"></div>
+              <div id="remote_video_" className="h-full w-full relative"></div>
 
               <button
                 className="bg-black hover:bg-gray-900 text-white text-center py-2 px-4 rounded-full absolute bottom-[10px] z-50 ml-2"
