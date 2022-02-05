@@ -1,6 +1,6 @@
 import axios from "axios";
-import { getFirestore, limit, onSnapshot, orderBy } from "firebase/firestore";
-import { collection, addDoc, query, where, getDocs } from "firebase/firestore";
+import { getDoc, getFirestore, limit, onSnapshot, orderBy } from "firebase/firestore";
+import { collection, addDoc, query, where, doc } from "firebase/firestore";
 import { map, Observable, shareReplay } from "rxjs";
 import { docData, ObservableFromQuery } from "../helpers/rxjsFirestore";
 
@@ -44,19 +44,6 @@ export const uploadThumbnail = async (payload) => {
 // a firestore collection reference
 const gigsRef = collection(db, "gigs");
 
-// export const getHeadlineGigs = () => {
-//   let q = query(gigsRef, orderBy("scheduled_at", "asc"), limit(3));
-//   let gigs = [];
-//   return new Observable((observer) => {
-//     const unsubscribe = onSnapshot(q, (querySnapshot) => {
-//       querySnapshot.forEach((doc) => {
-//         gigs.push(doc.data());
-//       });
-//       observer.next(gigs);
-//     });
-//     return () => unsubscribe();
-//   });
-// };
 
 export const streamHeadlineGigs = () => {
   let q = query(gigsRef, orderBy("date", "asc"), limit(3));
@@ -76,24 +63,16 @@ export const streamGigsByCategory = (category) => {
   );
 };
 
-export const getGigsByCategory = (category) => {
-  let q = query(gigsRef, where("category", "==", category));
-  let gigsResult = [];
-  return new Observable((observer) => {
-    const unsubscribe = onSnapshot(q, (querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        gigsResult.push(doc.data());
-      });
-      observer.next(gigsResult);
-      // console.log(gigsResult,"<<<<<<");
-    });
-    return () => unsubscribe();
-  });
+
+// get details of a single gig by id
+export const getGigById = async (id) => {
+  let docRef = doc(gigsRef, id);
+  let docSnap = await getDoc(docRef);
+  // return data if doc exists
+  if (docSnap.exists()) {
+    return docSnap.data();
+  }
+  return null;
 };
 
-// export const getAllGigsCategoryWise = () =>{
-//   let result = {}
-//   Object.keys(categoriesTable).forEach(category=>(
-//     null
-//   ))
-// }
+
