@@ -18,7 +18,7 @@ export const addNewGig = async (payload) => {
   try {
     const docRef = await addDoc(collection(db, "gigs"), payload);
     console.log("Document written with ID: ", docRef.id);
-    return { done: docRef.id };
+    return true;
   } catch (e) {
     console.error("Error adding document: ", e);
     return e;

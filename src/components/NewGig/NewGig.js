@@ -84,7 +84,7 @@ const NewGig = () => {
         ...formData,
       };
       try {
-        addNewGig(payload);
+        let added = addNewGig(payload);
         // reset formData
         setformData({
           title: "",
@@ -93,8 +93,10 @@ const NewGig = () => {
           date: "",
           category: "",
         });
-        // navigate to home page
-        window.location.href = "/home";
+        // navigate to home page if added is true
+        // if (added) {
+        //   window.location.href = "/home";
+        // }
       } catch (e) {
         console.error("Error adding document: ", e);
       }

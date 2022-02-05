@@ -112,7 +112,7 @@ const HomePage = () => {
             <div className="text-left category text-white text-5xl rounded-full px-4 py-2 mb-6">
               {categoriestable[category]}
             </div>
-            <div className="gigs-wrap flex flex-row">
+            <div className="gigs-wrap flex flex-row flex-wrap">
               {gigsCategoryWise[category].map((card) => (
                 <GigCardLarge data={card} />
               ))}
