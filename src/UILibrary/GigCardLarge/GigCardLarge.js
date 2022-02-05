@@ -23,9 +23,9 @@ const GigCardLarge = ({ data }) => {
       </div>
       <div className="flex flex-row justify-between">
         <DateWidget date={data.date} />
-        <div className="special-btn">
+        <Link to={`/livestream/${data.id}`} className="special-btn">
           <Plus />
-        </div>
+        </Link>
       </div>
     </div>
   );
