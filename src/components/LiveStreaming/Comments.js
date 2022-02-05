@@ -19,6 +19,7 @@ import rose from "../../images/rose-gift.png";
 import ship from "../../images/ship-gift.png";
 import star from "../../images/star-gift.png";
 import { Gift, MessageSquare, Send, Star } from "react-feather";
+import eye from "../../images/eye.png";
 
 const gifts = [
   {
@@ -140,7 +141,7 @@ const Comments = ({ rtmToken, rtcToken, channelName, isHost }) => {
           setShowRecievedGift(false);
           setRecievedGift("");
         }, 6000);
-        return console.log(message, "guft");
+        return console.log(message, "gift");
       }
       setCommentsArray([
         ...updatedCommentsArray.current,
@@ -197,13 +198,13 @@ const Comments = ({ rtmToken, rtcToken, channelName, isHost }) => {
     updatedChannel.current && updatedChannel.current.leave();
   });
 
-  const sendChannelMessage = () => {
+  const sendChannelMessage = (superChat = false) => {
     if (comment) {
       channel
         .sendMessage({
           text: JSON.stringify({
             comment,
-            type: "comment",
+            type: superChat ? "superChat" : "comment",
             sender: currentUser.firstName + currentUser.lastName,
           }),
         })
@@ -213,7 +214,7 @@ const Comments = ({ rtmToken, rtcToken, channelName, isHost }) => {
             ...commentsArray,
             {
               comment,
-              type: "comment",
+              type: superChat ? "superChat" : "comment",
             },
           ]);
 
@@ -243,12 +244,12 @@ const Comments = ({ rtmToken, rtcToken, channelName, isHost }) => {
 
   const messageSentBox = (comment, id, superChat = false) => {
     return (
-      <div
-        className={`place-self-end text-left mr-8 ${
-          superChat ? "border-t-teal-500" : ""
-        }`}
-      >
-        <div className="bg-white bg-opacity-10 shadow rounded-2xl p-5 max-w-md text-white">
+      <div className={`place-self-end text-left mr-8 mb-4`}>
+        <div
+          className={`bg-white bg-opacity-10 shadow rounded-2xl p-5 max-w-md text-white ${
+            superChat ? "border-t-teal-500 border-t-[20px]" : ""
+          }`}
+        >
           <div className="text-slate-800 font-semibold relative hover-trigger cursor-pointer">
             You
             {currentUser.host ? (
@@ -268,12 +269,12 @@ const Comments = ({ rtmToken, rtcToken, channelName, isHost }) => {
 
   const messageRecievedBox = (comment, sender, id, superChat = false) => {
     return (
-      <div
-        className={`place-self-start text-left ml-8 ${
-          superChat ? "border-t-teal-500" : ""
-        }`}
-      >
-        <div className="bg-white bg-opacity-10 shadow rounded-2xl p-5 text-white max-w-md">
+      <div className={`place-self-start text-left ml-8 mb-4`}>
+        <div
+          className={`bg-white bg-opacity-10 shadow rounded-2xl p-5 max-w-md text-white ${
+            superChat ? "border-t-teal-500 border-t-[20px] " : ""
+          }`}
+        >
           <div className="text-slate-800 font-semibold">{sender}</div>
           {comment}
         </div>
@@ -451,10 +452,19 @@ const Comments = ({ rtmToken, rtcToken, channelName, isHost }) => {
                 id="local_stream"
                 className="local_stream h-full w-full relative"
               ></div>
+              <div className="bg-white rounded-full absolute top-[10px] right-[5px] z-50 ml-2 flex justify-center items-center px-2">
+                <img src={eye} className="w-8 h-10" />
+                <span className="text-red-600">
+                  {memberCount == 2
+                    ? "1 person watching"
+                    : memberCount - 1 + " people watching"}
+                </span>
+              </div>
               <button
                 className="bg-black hover:bg-gray-900 text-white text-center py-2 px-4 rounded-full absolute bottom-[10px] z-50 ml-2"
                 onClick={() => leaveEventHost("host")}
               >
+                {" "}
                 Stop Streaming
               </button>
 
@@ -514,7 +524,7 @@ const Comments = ({ rtmToken, rtcToken, channelName, isHost }) => {
                   ? messageRecievedBox(comment, sender, id)
                   : messageSentBox(comment, id);
               }
-              if (type === "superchat") {
+              if (type === "superChat") {
                 return sender
                   ? messageRecievedBox(comment, sender, id, true)
                   : messageSentBox(comment, id, true);
@@ -538,18 +548,16 @@ const Comments = ({ rtmToken, rtcToken, channelName, isHost }) => {
               </div>
             )}
             <div className="user-actions">
-              <div className="gimmicks flex text-sm">
+              <div className="gimmicks flex text-sm mt-6">
                 <div
-                onClick={() =>
-                  !isHost ? setShowGiftsBox(!showGiftsBox) : ""
-                }
+                  onClick={() =>
+                    !isHost ? setShowGiftsBox(!showGiftsBox) : ""
+                  }
                   className={`${
                     isHost ? "cursor-not-allowed" : "cursor-pointer"
                   } bg-black/60 hover:bg-white/60 hover:text-black border-white border text-white rounded-full py-2 px-4 flex items-center justify-center`}
                 >
-                  <Gift
-                    
-                  />
+                  <Gift />
                   &ensp; Send a gift
                   {/* <img
                   
@@ -560,7 +568,10 @@ const Comments = ({ rtmToken, rtcToken, channelName, isHost }) => {
                   }
                 /> */}
                 </div>
-                <div className="cursor-pointer bg-black/60 hover:bg-white/60 hover:text-black border-white border ml-2 text-white rounded-full py-2 px-4 flex items-center justify-center">
+                <div
+                  className="cursor-pointer bg-black/60 hover:bg-white/60 hover:text-black border-white border ml-2 text-white rounded-full py-2 px-4 flex items-center justify-center"
+                  onClick={() => sendChannelMessage(true)}
+                >
                   <MessageSquare />
                   &ensp;Send a Superchat
                 </div>
@@ -584,7 +595,7 @@ const Comments = ({ rtmToken, rtcToken, channelName, isHost }) => {
                 </div>
                 <div
                   className="w-16 h-16 flex items-center cursor-pointer"
-                  onClick={sendChannelMessage}
+                  onClick={() => sendChannelMessage()}
                 >
                   <div className="bg-white text-black rounded-full p-4 flex items-center justify-center">
                     <Send />
