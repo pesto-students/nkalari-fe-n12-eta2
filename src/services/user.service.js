@@ -47,7 +47,7 @@ async function getTransactions() {
       return await handleResponse(response);
   }
 
-  async function stripeCheckout(){
+  async function stripeCheckout(price_id){
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json",
@@ -57,7 +57,7 @@ async function getTransactions() {
     };
   
     const response = await fetch(
-      'http://localhost:4000/api/transactions/create-stripe-api',
+      'http://localhost:4000/api/transactions/create-stripe-api?price_id='+price_id,
       requestOptions
     );
     

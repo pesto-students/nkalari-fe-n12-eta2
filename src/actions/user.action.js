@@ -86,10 +86,10 @@ function getProfile() {
   }
 }
 
-function stripeCheckout(){
+function stripeCheckout(price_id){
   return (dispatch) => {
     dispatch(request());
-    userService.stripeCheckout().then(
+    userService.stripeCheckout(price_id).then(
       (response) => {
         dispatch(success(response));
       },
@@ -181,10 +181,12 @@ export let identifyLoggedUser = () => {
               })
             );
           } else {
+            console.log(localStorage.nkalari, "token removed");
             localStorage.removeItem("nkalari");
           }
         })
         .catch((err) => {
+          console.log(localStorage.nkalari, "token removed");
           localStorage.removeItem("nkalari");
           console.log(err, "invalid user");
         });
@@ -212,12 +214,52 @@ export let updateUser = (payload) => {
   };
 };
 
-export let logout = () => {
-  return function(){
-    localStorage.clear();
-    window.location.href = '/';
-  }
+// export let logout = () => {
+//   return function(){
+//     localStorage.clear();
+//     window.location.href = '/';
+//   }
   
-}
+// }
 
 
+export let getRtmToken = (payload) => {
+  return function () {
+    const { channelName } = payload;
+    return axios
+      .get(
+        `${process.env.REACT_APP_DOMAIN}/api/agora-token/rtm?channelName=${channelName}`,
+        {
+          headers: {
+            authorization: localStorage.getItem("nkalari"),
+          },
+        }
+      )
+      .then((response) => response.data.token);
+  };
+};
+
+// logout current user
+export const logout = () => {
+  return () => {
+    localStorage.clear();
+    // window.location.href = "/";
+    };
+};
+
+
+export let getRtcToken = (payload) => {
+  return function () {
+    const { channelName, role } = payload;
+    return axios
+      .get(
+        `${process.env.REACT_APP_DOMAIN}/api/agora-token/rtc?channelName=${channelName}&&role=${role}`,
+        {
+          headers: {
+            authorization: localStorage.getItem("nkalari"),
+          },
+        }
+      )
+      .then((response) => response.data.token);
+  };
+};

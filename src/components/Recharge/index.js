@@ -16,7 +16,7 @@ const RechargePage = () => {
 
           <p className="m-5 text-2xl text-white">Select Your Pack</p>
 
-          <div className="flex flex-wrap justify-between">
+          <div className="flex flex-wrap justify-between ml-28">
             <RechargePack numberOfDiamonds={"2000"} amount={"510"} />
             <RechargePack numberOfDiamonds={"4000"} amount={"1020"} />
             <RechargePack numberOfDiamonds={"6000"} amount={"1530"} />
