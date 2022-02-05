@@ -1,8 +1,8 @@
 export const userService = {
-    getTransactions,
-    Signup,
-    getProfile,
-    stripeCheckout
+  getTransactions,
+  Signup,
+  getProfile,
+  stripeCheckout,
 };
 
 async function getTransactions() {
@@ -19,52 +19,56 @@ async function getTransactions() {
   return await handleResponse(response);
 }
 
-  async function Signup(){
-    const requestOptions = {
-        method: "POST",
-        headers: { "Content-Type": "application/json" }, /* Give the required headers here */
-      };
-    
-      const response = await fetch(
-        'https://nkalari-back-week-1-rel-mixxoh.herokuapp.com/api/users/signup',
-        requestOptions
-      );
-      
-      return await handleResponse(response);
-  }
-  
-  async function getProfile(){
-    const requestOptions = {
-        method: "GET",
-        headers: { "Content-Type": "application/json" }, /* Give the required headers here */
-      };
-    
-      const response = await fetch(
-        'https://run.mocky.io/v3/73121e85-83ef-4518-9e28-8fad20fa3a84',
-        requestOptions
-      );
-      
-      return await handleResponse(response);
-  }
+async function Signup() {
+  const requestOptions = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    } /* Give the required headers here */,
+  };
 
-  async function stripeCheckout(){
-    const requestOptions = {
-      method: "POST",
-      headers: { "Content-Type": "application/json",
+  const response = await fetch(
+    "https://nkalari-back-week-1-rel-mixxoh.herokuapp.com/api/users/signup",
+    requestOptions
+  );
+
+  return await handleResponse(response);
+}
+
+async function getProfile() {
+  const requestOptions = {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    } /* Give the required headers here */,
+  };
+
+  const response = await fetch(
+    "https://run.mocky.io/v3/73121e85-83ef-4518-9e28-8fad20fa3a84",
+    requestOptions
+  );
+
+  return await handleResponse(response);
+}
+
+async function stripeCheckout() {
+  const requestOptions = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
       "Access-Control-Allow-Origin": "http://siteA.com",
       "Access-Control-Allow-Methods": "GET, POST, PUT",
-      "Access-Control-Allow-Headers": "Content-Type" }, /* Give the required headers here */
-    };
-  
-    const response = await fetch(
-      'http://localhost:4000/api/transactions/create-stripe-api',
-      requestOptions
-    );
-    
-    return await handleResponse(response);
-  } 
+      "Access-Control-Allow-Headers": "Content-Type",
+    } /* Give the required headers here */,
+  };
 
+  const response = await fetch(
+    `${process.env.REACT_APP_DOMAIN}/api/transactions/create-stripe-api`,
+    requestOptions
+  );
 
+  return await handleResponse(response);
+}
 
 function handleResponse(response) {
   return response.text().then((text) => {

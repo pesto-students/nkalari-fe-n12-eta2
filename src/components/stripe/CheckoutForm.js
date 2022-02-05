@@ -1,4 +1,4 @@
-import {ElementsConsumer, PaymentElement} from '@stripe/react-stripe-js';
+import { ElementsConsumer, PaymentElement } from "@stripe/react-stripe-js";
 import React, { Component } from "react";
 
 class CheckoutForm extends React.Component {
@@ -7,7 +7,7 @@ class CheckoutForm extends React.Component {
     // which would refresh the page.
     event.preventDefault();
 
-    const {stripe, elements} = this.props;
+    const { stripe, elements } = this.props;
 
     if (!stripe || !elements) {
       // Stripe.js has not yet loaded.
@@ -19,7 +19,7 @@ class CheckoutForm extends React.Component {
       //`Elements` instance that was used to create the Payment Element
       elements,
       confirmParams: {
-        return_url: "http://localhost:3001/",
+        return_url: `${process.env.REACT_APP_DOMAIN}/`,
       },
     });
 
@@ -46,9 +46,9 @@ class CheckoutForm extends React.Component {
 export default function InjectedCheckoutForm() {
   return (
     <ElementsConsumer>
-      {({stripe, elements}) => (
+      {({ stripe, elements }) => (
         <CheckoutForm stripe={stripe} elements={elements} />
       )}
     </ElementsConsumer>
-  )
+  );
 }
