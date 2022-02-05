@@ -19,6 +19,7 @@ import rose from "../../images/rose-gift.png";
 import ship from "../../images/ship-gift.png";
 import star from "../../images/star-gift.png";
 import { Gift, MessageSquare, Send, Star } from "react-feather";
+import eye from "../../images/eye.png";
 
 const gifts = [
   {
@@ -451,10 +452,19 @@ const Comments = ({ rtmToken, rtcToken, channelName, isHost }) => {
                 id="local_stream"
                 className="local_stream h-full w-full relative"
               ></div>
+              <div className="bg-white rounded-full absolute top-[10px] right-[5px] z-50 ml-2 flex justify-center items-center px-2">
+                <img src={eye} className="w-8 h-10" />
+                <span className="text-red-600">
+                  {memberCount == 2
+                    ? "1 person watching"
+                    : memberCount - 1 + " people watching"}
+                </span>
+              </div>
               <button
                 className="bg-black hover:bg-gray-900 text-white text-center py-2 px-4 rounded-full absolute bottom-[10px] z-50 ml-2"
                 onClick={() => leaveEventHost("host")}
               >
+                {" "}
                 Stop Streaming
               </button>
 
@@ -540,16 +550,14 @@ const Comments = ({ rtmToken, rtcToken, channelName, isHost }) => {
             <div className="user-actions">
               <div className="gimmicks flex text-sm">
                 <div
-                onClick={() =>
-                  !isHost ? setShowGiftsBox(!showGiftsBox) : ""
-                }
+                  onClick={() =>
+                    !isHost ? setShowGiftsBox(!showGiftsBox) : ""
+                  }
                   className={`${
                     isHost ? "cursor-not-allowed" : "cursor-pointer"
                   } bg-black/60 hover:bg-white/60 hover:text-black border-white border text-white rounded-full py-2 px-4 flex items-center justify-center`}
                 >
-                  <Gift
-                    
-                  />
+                  <Gift />
                   &ensp; Send a gift
                   {/* <img
                   
