@@ -84,7 +84,7 @@ const gifts = [
 
 let client;
 let channel;
-const Comments = ({ rtmToken, rtcToken, channelName }) => {
+const Comments = ({ rtmToken, rtcToken, channelName, isHost }) => {
   const { currentUser } = useSelector((store) => store.user);
   const [comment, setComment] = useState("");
   const [memberCount, setMemberCount] = useState(0);
@@ -97,8 +97,6 @@ const Comments = ({ rtmToken, rtcToken, channelName }) => {
   const [isStreamStarted, setIsStreamStarted] = useState(false);
   const [showGiftsBox, setShowGiftsBox] = useState(false);
 
-  const isHost =
-    currentUser.phoneNumber === "++919999999999" ? "publisher" : "";
 
   // Params for login
   let options = {
@@ -284,6 +282,8 @@ const Comments = ({ rtmToken, rtcToken, channelName }) => {
               "join channel: " + options.channel + " success, uid: " + uid
             );
             rtc.params.uid = uid;
+
+            // if client role is host, then create a local stream
             if (role === "host") {
               rtc.client.setClientRole("host");
               // Create a local stream
@@ -314,6 +314,8 @@ const Comments = ({ rtmToken, rtcToken, channelName }) => {
                 console.log("audience", evt);
               });
             }
+
+            // if client role is audience, then only join the channel
             if (role === "audience") {
               rtc.client.on("connection-state-change", function (evt) {
                 console.log("audience", evt);
