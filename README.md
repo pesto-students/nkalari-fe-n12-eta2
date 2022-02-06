@@ -46,9 +46,11 @@ A livestreaming platform for musicians, painters, comedians, dancers and actors 
 
 <a href="https://docs.google.com/document/d/1gusD8HeKRB9gGvAD0XKwNsuuJPW4fnxqiIsV9OKexUc/edit?usp=sharing">PRD</a>
 &nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://res.cloudinary.com/kalari/image/upload/v1644122408/HLD_sclowx.png">HLD</a>
+&nbsp;&nbsp;&nbsp;&nbsp;
 <a href="https://www.figma.com/file/8mfWR935k15JheCrD6oEzu/Hire-wand---Feature-Set?node-id=3%3A16">Wireframes</a>
 &nbsp;&nbsp;&nbsp;&nbsp;
-<a href="https://docs.google.com/document/d/1bW4CdJzJhmPS03K8--FGrG9uIeCFzOjpFLzvVvCipHs/edit?usp=sharing">Coding Practices</a>
+<a href="https://drive.google.com/file/d/1RWk71ZR6cVY-c2g_gaNI5I6DZNRQJPzE/view?usp=sharing">Coding Practices</a>
 
 ### Backend Repo
 
