@@ -23,7 +23,10 @@
     "craco": "^0.0.3",
     "firebase": "^9.6.1",
     "history": "^5.2.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.3.3",
     "otp-timer": "^1.1.5",
+    "prettier": "^2.5.1",
     "react": "^17.0.2",
     "react-beforeunload": "^2.5.2",
     "react-chartjs-2": "^4.0.1",
@@ -45,6 +48,11 @@
     "sweetalert2": "^11.3.5",
     "web-vitals": "^2.1.2"
   },
+  "husky": {
+      "hooks": {
+        "pre-commit": "lint-staged"
+      }
+    },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -57,6 +65,12 @@
       "react-app/jest"
     ]
   },
+
+ "lint-staged": {
+   "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+     "prettier --write"
+   ]
+ },
   "browserslist": {
     "production": [
       ">0.2%",

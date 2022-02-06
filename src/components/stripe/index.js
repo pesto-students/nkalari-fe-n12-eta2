@@ -1,18 +1,15 @@
 import React, { useState, useEffect } from "react";
-import {userActions} from "./../../actions/user.action";
+import { userActions } from "./../../actions/user.action";
 import { connect } from "react-redux";
 
-
-function checkout(props){
-    props.stripeCheckout();
+function checkout(props) {
+  props.stripeCheckout();
 }
 
 const ProductDisplay = (props) => (
-  <section>     
+  <section>
     <form onSubmit={props.stripeCheckout()}>
-      <button type="submit">
-        Checkout
-      </button>
+      <button type="submit">Checkout</button>
     </form>
   </section>
 );
@@ -35,29 +32,23 @@ function Stripe(props) {
     }
 
     if (query.get("canceled")) {
-      setMessage(
-        "Order canceled -- checkout when you're ready."
-      );
+      setMessage("Order canceled -- checkout when you're ready.");
     }
   }, []);
 
-  return message ? (
-    <Message message={message} />
-  ) : (
-    <ProductDisplay />
-  );
+  return message ? <Message message={message} /> : <ProductDisplay />;
 }
 
 function mapState(state) {
-    console.log("state", state);
-    // const { transactions } = state.getTransactions;
-    return {  };
-  }
-  
-  const actionCreators = {
-    stripeCheckout: userActions.stripeCheckout,
-  };
+  console.log("state", state);
+  // const { transactions } = state.getTransactions;
+  return {};
+}
 
-  const stripePage = connect(mapState, actionCreators)(ProductDisplay);
+const actionCreators = {
+  stripeCheckout: userActions.stripeCheckout,
+};
 
-  export default  stripePage;
+const stripePage = connect(mapState, actionCreators)(ProductDisplay);
+
+export default stripePage;

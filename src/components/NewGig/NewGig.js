@@ -119,7 +119,12 @@ const NewGig = () => {
 
   return (
     <div className="newgig-wrap my-12 ml-32 px-6">
-      <h1 className="relative z-10 text-5xl text-left" onClick={()=>addUserToGig()}>New Gig</h1>
+      <h1
+        className="relative z-10 text-5xl text-left"
+        onClick={() => addUserToGig()}
+      >
+        New Gig
+      </h1>
 
       {/* display all the errors */}
       {errors.length > 0 && (

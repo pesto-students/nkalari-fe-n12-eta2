@@ -63,7 +63,8 @@ async function stripeCheckout(price_id) {
   };
 
   const response = await fetch(
-    `${process.env.REACT_APP_DOMAIN}/api/transactions/create-stripe-api?price_id=`+price_id,
+    `${process.env.REACT_APP_DOMAIN}/api/transactions/create-stripe-api?price_id=` +
+      price_id,
     requestOptions
   );
 

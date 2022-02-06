@@ -28,7 +28,12 @@ const LiveStream = ({ match }) => {
     // console.log("match", match);
 
     if (hostUser) {
-      console.log(currentUser.uid == hostUser.uid,"check", currentUser.uid, hostUser.uid);
+      console.log(
+        currentUser.uid == hostUser.uid,
+        "check",
+        currentUser.uid,
+        hostUser.uid
+      );
       dispatch(getRtmToken({ channelName: channelId }))
         .then((rtmToken) => {
           console.log(rtmToken, "rtmToken");

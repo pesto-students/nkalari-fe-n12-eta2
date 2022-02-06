@@ -29,7 +29,6 @@ const categoriestable = {
 //User component
 //Category component
 
-
 const HomePage = () => {
   const [index, setindex] = useState(0);
 
@@ -43,10 +42,9 @@ const HomePage = () => {
   };
 
   // get current user from store
-  const  currentUser  = useSelector((store) => {
+  const currentUser = useSelector((store) => {
     return store.user;
   });
-
 
   return (
     <div className="relative home-wrap w-full bg-black/60">
@@ -61,18 +59,26 @@ const HomePage = () => {
             >
               <div className="absolute w-11/12 bottom-32 left-32 flex justify-between items-end">
                 <div className="details z-20 rounded-xl p-6 text-white w-2/5 text-left">
-                  <Link to={`/gig/${gig.id}`} className="text-8xl hover:underline font-black headline-font inline-block">
+                  <Link
+                    to={`/gig/${gig.id}`}
+                    className="text-8xl hover:underline font-black headline-font inline-block"
+                  >
                     {gig.title}
                   </Link>
                   <div className="info-deets flex flex-row my-6">
-                    <UserWidget data={gig.host_user === "" ? currentUser : gig.host_user} />
+                    <UserWidget
+                      data={gig.host_user === "" ? currentUser : gig.host_user}
+                    />
                     <CategoryWidget category={categoriestable[gig.category]} />
                   </div>
                   {/* <p className="text-xl my-6 opacity-60">{gig.desc}</p> */}
                   <div className="info flex flex-row justify-between">
                     <DateWidget date={gig.date} />
                     <div className="join">
-                      <Link to={`/livestream/${gig.id}`} className="special-btn flex items-center">
+                      <Link
+                        to={`/livestream/${gig.id}`}
+                        className="special-btn flex items-center"
+                      >
                         <Plus /> &ensp; JOIN
                       </Link>
                     </div>
