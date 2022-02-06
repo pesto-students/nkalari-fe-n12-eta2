@@ -1,5 +1,11 @@
 import axios from "axios";
-import { getDoc, getFirestore, limit, onSnapshot, orderBy } from "firebase/firestore";
+import {
+  getDoc,
+  getFirestore,
+  limit,
+  onSnapshot,
+  orderBy,
+} from "firebase/firestore";
 import { collection, addDoc, query, where, doc } from "firebase/firestore";
 import { map, Observable, shareReplay } from "rxjs";
 import { docData, ObservableFromQuery } from "../helpers/rxjsFirestore";
@@ -44,7 +50,6 @@ export const uploadThumbnail = async (payload) => {
 // a firestore collection reference
 const gigsRef = collection(db, "gigs");
 
-
 export const streamHeadlineGigs = () => {
   let q = query(gigsRef, orderBy("date", "asc"), limit(3));
   return ObservableFromQuery(q).pipe(
@@ -63,7 +68,6 @@ export const streamGigsByCategory = (category) => {
   );
 };
 
-
 // get details of a single gig by id
 export const getGigById = async (id) => {
   let docRef = doc(gigsRef, id);
@@ -75,4 +79,15 @@ export const getGigById = async (id) => {
   return null;
 };
 
+
+// get gigs where the user is a host
+export const getGigsByHost = (userId) => {
+  let q = query(gigsRef, where("host_user.uid", "==", userId));
+  return ObservableFromQuery(q).pipe(
+    map((snapshot) => snapshot.docs),
+    map((docs) => docs.map(docData)),
+    shareReplay(1)
+  );
+
+}
 

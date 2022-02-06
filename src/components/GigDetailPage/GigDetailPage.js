@@ -49,7 +49,7 @@ const GigDetailPage = ({ match }) => {
             {gigData.title}
           </h1>
           <div className="my-2 inline-block">
-            {gigData.host_user ? <UserWidget data={gigData.host_user} />: ""}
+            {gigData.host_user ? <UserWidget data={gigData.host_user} /> : ""}
           </div>
           <div className="gig-desc-wrap">
             <div
@@ -59,7 +59,9 @@ const GigDetailPage = ({ match }) => {
           </div>
         </div>
         <div className="join-stream">
-          <Link to={`/livestream/${id}`} className="primary-btn">Join Stream</Link>
+          <Link to={`/livestream/${id}`} className="primary-btn">
+            Join Stream
+          </Link>
         </div>
       </div>
     </div>

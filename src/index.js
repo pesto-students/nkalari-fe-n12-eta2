@@ -5,9 +5,13 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import { store } from "./helpers/store";
+import { Helmet } from "react-helmet";
 
 ReactDOM.render(
   <React.StrictMode>
+    <Helmet>
+      <title>Kalari</title>
+    </Helmet>
     <Provider store={store}>
       <App />
     </Provider>

@@ -1,19 +1,19 @@
-.gig-desc-wrap h1{
+.gig-desc-wrap h1 {
   @apply text-4xl my-2;
 }
 
-.gig-desc-wrap h2{
+.gig-desc-wrap h2 {
   @apply text-3xl my-2;
 }
 
-.gig-desc-wrap h3{
+.gig-desc-wrap h3 {
   @apply text-2xl my-2;
 }
 
-.gig-desc-wrap ol{
+.gig-desc-wrap ol {
   @apply list-decimal ml-4 my-2;
 }
 
-.gig-desc-wrap ul{
+.gig-desc-wrap ul {
   @apply list-disc ml-4 my-2;
 }

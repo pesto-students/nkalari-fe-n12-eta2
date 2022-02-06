@@ -14,7 +14,9 @@ export const docData = (doc) => {
 
 export const ObservableFromQuery = (query) => {
   return new Observable((subscriber) => {
-    const unsubscribe = onSnapshot(query,(snapshot) => subscriber.next(snapshot));
+    const unsubscribe = onSnapshot(query, (snapshot) =>
+      subscriber.next(snapshot)
+    );
     return () => unsubscribe();
   });
 };
