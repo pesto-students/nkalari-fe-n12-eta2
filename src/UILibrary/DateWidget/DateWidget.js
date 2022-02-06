@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const DateWidget = ({ date }) => {
   let gigDate = new Date(date);

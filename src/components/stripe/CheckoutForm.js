@@ -3,18 +3,15 @@ import React, { Component } from "react";
 
 class CheckoutForm extends React.Component {
   handleSubmit = async (event) => {
-
     event.preventDefault();
 
     const { stripe, elements } = this.props;
 
     if (!stripe || !elements) {
-     
       return;
     }
 
     const result = await stripe.confirmPayment({
-      
       elements,
       confirmParams: {
         return_url: `${process.env.REACT_APP_DOMAIN}/`,
@@ -22,10 +19,8 @@ class CheckoutForm extends React.Component {
     });
 
     if (result.error) {
-      
       console.log(result.error.message);
     } else {
-      
     }
   };
 

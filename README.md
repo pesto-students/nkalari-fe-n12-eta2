@@ -44,15 +44,11 @@ A livestreaming platform for musicians, painters, comedians, dancers and actors 
 
 ### Artefacts
 
-<a href="https://drive.google.com/file/d/1GeWlJTQ7-VaQLpc-Se31_dH8Kf1n8kUa/view?usp=sharing">PRD</a>
+<a href="https://docs.google.com/document/d/1gusD8HeKRB9gGvAD0XKwNsuuJPW4fnxqiIsV9OKexUc/edit?usp=sharing">PRD</a>
 &nbsp;&nbsp;&nbsp;&nbsp;
-<a href="https://drive.google.com/file/d/1wfXcbGgDDSTDIMjHo2rQlWlYX2FSgtwj/view?usp=sharing">HLD</a>
+<a href="https://www.figma.com/file/8mfWR935k15JheCrD6oEzu/Hire-wand---Feature-Set?node-id=3%3A16">Wireframes</a>
 &nbsp;&nbsp;&nbsp;&nbsp;
-<a href="https://drive.google.com/file/d/1YabDlAU6MeRzFvw3qotHrL2CxlqkCiEA/view?usp=sharing">One Pager</a>
-&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="https://drive.google.com/file/d/1VhLwtQEiYDabaPfq7dHEWbr2DseD71Ce/view?usp=sharing">Wireframes</a>
-&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="https://drive.google.com/file/d/1rL3K0NTI91a6QQmy0J6BE9FFQSvwDgVY/view?usp=sharing">Coding Practices</a>
+<a href="https://docs.google.com/document/d/1bW4CdJzJhmPS03K8--FGrG9uIeCFzOjpFLzvVvCipHs/edit?usp=sharing">Coding Practices</a>
 
 ### Backend Repo
 

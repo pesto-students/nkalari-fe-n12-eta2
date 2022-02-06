@@ -17,6 +17,7 @@ import NewGig from "./components/NewGig/NewGig";
 import ProfilePage from "./components/ProfilePage/ProfilePage";
 import GigDetailPage from "./components/GigDetailPage/GigDetailPage";
 import LiveStream from "./components/LiveStreaming/LiveStream";
+import Error from "./components/Error";
 
 function publicRoutes() {
   return (
@@ -26,7 +27,7 @@ function publicRoutes() {
         <Route exact path="/login" component={Login} />
         {/* <Redirect from="*" to="/login" /> */}
         <Route path="*">
-          <h1>404 error- Rout not found</h1>
+          <Error />
         </Route>
       </Switch>
     </>

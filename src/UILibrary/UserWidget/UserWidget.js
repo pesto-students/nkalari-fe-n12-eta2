@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 // display user info
 const UserWidget = ({ data }) => {

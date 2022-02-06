@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import AgoraRTM from "agora-rtm-sdk";
 import AgoraRTC from "agora-rtc-sdk";
 import { useBeforeunload } from "react-beforeunload";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import sendButton from "../../assets/sendIcon.png";
 import diamond from "../../images/Diamonds.png";
 // import "./style.css";
@@ -20,6 +20,8 @@ import ship from "../../images/ship-gift.png";
 import star from "../../images/star-gift.png";
 import { Gift, MessageSquare, Send, Star } from "react-feather";
 import eye from "../../images/eye.png";
+import axios from "axios";
+import { updateLoggedUser } from "../../actions/user.action";
 
 const gifts = [
   {
@@ -100,6 +102,7 @@ const Comments = ({ rtmToken, rtcToken, channelName, isHost }) => {
   const [showGiftsBox, setShowGiftsBox] = useState(false);
   const [showRecievedGift, setShowRecievedGift] = useState(false);
   const [recivedGift, setRecievedGift] = useState();
+  const dispatch = useDispatch();
 
   // Params for login
   let options = {
@@ -129,14 +132,41 @@ const Comments = ({ rtmToken, rtcToken, channelName, isHost }) => {
   };
 
   const subscribeChannelEvents = (channel) => {
-    channel.on("ChannelMessage", function (message, memberId) {
+    channel.on("ChannelMessage", async function (message, memberId) {
       console.log(message, " channel message", memberId);
       if (JSON.parse(message.text).type === "gift") {
-        setShowRecievedGift(true);
-        const source = gifts.filter(
+        const gift = gifts.filter(
           (gift) => gift.name === JSON.parse(message.text).gift
-        )[0].source;
-        setRecievedGift(source);
+        )[0];
+        if (isHost) {
+          const transaction = await axios.post(
+            `${process.env.REACT_APP_DOMAIN}/api/transactions`,
+            {
+              type: "gift",
+              diamonds: gift.price,
+              status: "Successful",
+              giftName: gift.name,
+              sentBy: JSON.parse(message.text).senderId,
+            },
+            {
+              headers: {
+                authorization: localStorage.getItem("nkalari"),
+              },
+            }
+          );
+
+          dispatch(
+            updateLoggedUser({
+              currentUser: { ...currentUser, wallet: transaction.data.wallet },
+            })
+          );
+          console.log(transaction, "transacation recieved gift");
+        }
+
+        setShowRecievedGift(true);
+
+        setRecievedGift(gift.source);
+
         setTimeout(() => {
           setShowRecievedGift(false);
           setRecievedGift("");
@@ -206,6 +236,7 @@ const Comments = ({ rtmToken, rtcToken, channelName, isHost }) => {
             comment,
             type: superChat ? "superChat" : "comment",
             sender: currentUser.firstName + currentUser.lastName,
+            senderId: currentUser._id,
           }),
         })
         .then((res) => {
@@ -416,13 +447,37 @@ const Comments = ({ rtmToken, rtcToken, channelName, isHost }) => {
           gift: gift.name,
           type: "gift",
           sender: currentUser.firstName + currentUser.lastName,
+          senderId: currentUser._id,
         }),
       })
-      .then((res) => {
+      .then(async (res) => {
         // Your code for handling the event when the channel message is successfully sent.
         // setRecievedGift()
 
         // setComment("");
+        const transaction = await axios.post(
+          `${process.env.REACT_APP_DOMAIN}/api/transactions`,
+          {
+            type: "gift",
+            diamonds: -gift.price,
+            status: "Successful",
+            giftName: gift.name,
+            sentTo: currentUser._id,
+          },
+          {
+            headers: {
+              authorization: localStorage.getItem("nkalari"),
+            },
+          }
+        );
+
+        dispatch(
+          updateLoggedUser({
+            currentUser: { ...currentUser, wallet: transaction.data.wallet },
+          })
+        );
+        console.log(transaction, "transacation sent gift");
+
         setShowRecievedGift(true);
         setRecievedGift(gift.source);
         setTimeout(() => {
@@ -460,11 +515,14 @@ const Comments = ({ rtmToken, rtcToken, channelName, isHost }) => {
                     : memberCount - 1 + " people watching"}
                 </span>
               </div>
+              <div className="bg-white rounded-full absolute top-[10px] left-[5px] z-50 ml-2 flex justify-center items-center px-2">
+                <img src={diamond} className="w-8 h-10" />
+                <span className="text-red-600 px-2">{currentUser.wallet}</span>
+              </div>
               <button
                 className="bg-black hover:bg-gray-900 text-white text-center py-2 px-4 rounded-full absolute bottom-[10px] z-50 ml-2"
                 onClick={() => leaveEventHost("host")}
               >
-                {" "}
                 Stop Streaming
               </button>
 
@@ -485,6 +543,10 @@ const Comments = ({ rtmToken, rtcToken, channelName, isHost }) => {
               >
                 Leave Streaming
               </button>
+              <div className="bg-white rounded-full absolute top-[10px] left-[5px] z-50 ml-2 flex justify-center items-center px-2">
+                <img src={diamond} className="w-8 h-10" />
+                <span className="text-red-600 px-2">{currentUser.wallet}</span>
+              </div>
               {showRecievedGift && (
                 <div className="text-white text-center py-2 px-4 rounded-full absolute bottom-[10px] z-50 ml-2 right-[15px] animate-bounce ">
                   {"Host Received"}

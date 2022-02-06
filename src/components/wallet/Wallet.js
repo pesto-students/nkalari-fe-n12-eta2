@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./index.css";
-import { connect } from "react-redux";
+import { connect, useSelector } from "react-redux";
 import { userActions } from "./../../actions/user.action";
 import Diamonds from "./../../images/Diamonds.png";
 import Navbar from "../navbar/Navbar";
@@ -100,6 +100,8 @@ function Wallet(props) {
 
   const data = React.useMemo(() => getData(), []);
 
+  console.log(props, "props");
+
   // const ctx = document.getElementById('myChart').getContext('2d');
 
   // const data = {
@@ -179,7 +181,7 @@ function Wallet(props) {
                   <span class="md:text-xl">
                     <img src={Diamonds}></img>
                   </span>
-                  92,817
+                  {props.currentUser.wallet}
                 </h2>
               </div>
               <div class="flex gap-2 md:gap-4">
@@ -196,30 +198,6 @@ function Wallet(props) {
                   Withdraw
                 </a>
               </div>
-            </div>
-          </div>
-          <div class="col-span-2 p-6 rounded-2xl bg-gradient-to-r from-blue-500 to-blue-800 flex flex-col justify-between">
-            <div class="flex flex-col">
-              <p class="text-white font-bold">Lorem ipsum dolor sit amet</p>
-              <p class="mt-1 text-xs md:text-sm text-gray-50 font-light leading-tight max-w-sm">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio
-                soluta saepe consequuntur facilis ab a. Molestiae ad saepe
-                assumenda praesentium rem dolore? Exercitationem, neque
-                obcaecati?
-              </p>
-            </div>
-            <div class="flex justify-between items-end">
-              <a
-                href="#"
-                class="bg-blue-800 px-4 py-3 rounded-lg text-white text-xs tracking-wider font-semibold hover:bg-blue-600 hover:text-white"
-              >
-                Learn More
-              </a>
-              <img
-                src="https://atom.dzulfarizan.com/assets/calendar.png"
-                alt="calendar"
-                class="w-auto h-24 object-cover"
-              />
             </div>
           </div>
         </div>
@@ -261,7 +239,8 @@ function Wallet(props) {
 function mapState(state) {
   console.log("state", state);
   const { transactions } = state.getTransactions;
-  return { transactions };
+  const { currentUser } = state.user;
+  return { transactions, currentUser };
 }
 
 const actionCreators = {
