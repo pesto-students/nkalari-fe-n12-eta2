@@ -200,30 +200,6 @@ function Wallet(props) {
               </div>
             </div>
           </div>
-          <div class="col-span-2 p-6 rounded-2xl bg-gradient-to-r from-blue-500 to-blue-800 flex flex-col justify-between">
-            <div class="flex flex-col">
-              <p class="text-white font-bold">Lorem ipsum dolor sit amet</p>
-              <p class="mt-1 text-xs md:text-sm text-gray-50 font-light leading-tight max-w-sm">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio
-                soluta saepe consequuntur facilis ab a. Molestiae ad saepe
-                assumenda praesentium rem dolore? Exercitationem, neque
-                obcaecati?
-              </p>
-            </div>
-            <div class="flex justify-between items-end">
-              <a
-                href="#"
-                class="bg-blue-800 px-4 py-3 rounded-lg text-white text-xs tracking-wider font-semibold hover:bg-blue-600 hover:text-white"
-              >
-                Learn More
-              </a>
-              <img
-                src="https://atom.dzulfarizan.com/assets/calendar.png"
-                alt="calendar"
-                class="w-auto h-24 object-cover"
-              />
-            </div>
-          </div>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-5 items-start px-4 xl:p-0 gap-y-4 md:gap-6">
