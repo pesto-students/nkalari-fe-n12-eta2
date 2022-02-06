@@ -2,7 +2,7 @@ import React from "react";
 
 // display user info
 const UserWidget = ({ data }) => {
-  console.log(data, "data");
+  // console.log(data, "data");
   return (
     <div className="user-widget flex flex-row bg-white/30 backdrop-blur px-4 py-2 rounded-full mr-4">
       <img

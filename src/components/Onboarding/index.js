@@ -85,23 +85,42 @@ const Onboarding = () => {
 
   return (
     <>
-      <div className="container">
-        <div className="text-box column">
-          <div className="overlay">
-            <h2>
-              Host your gigs and Increase your reach to a better relevant
-              audience
-            </h2>
+      <div className="onboarding-wrap h-full relative flex justify-between items-start p-12">
+        <img
+          className="overlay-image z-0 absolute top-0 left-0 opacity-40"
+          src="https://res.cloudinary.com/kalari/image/upload/v1643364402/alexander-popov-hTv8aaPziOQ-unsplash_ywktfe.jpg"
+          alt="login-default"
+        />
+        <div className="text-box h-full flex flex-col justify-between relative text-left text-white w-4/6">
+          <div className="logo-full flex flex-row items-center">
+            <div className="logo bg-white w-16 h-16 rounded-xl shadow-xl grid items-center">
+              <span className="text-5xl text-center text-transparent bg-clip-text bg-gradient-to-tl from-violet-500 via-rose-500 to-amber-500 headline-font text-white font-black">
+                k
+              </span>
+            </div>
+            <div className="logo-type ml-6 headline-font text-5xl font-black">
+              kalari
+            </div>
           </div>
+
+          <h2 className="text-8xl">
+            Host your gigs and Increase your reach to a better relevant audience
+          </h2>
         </div>
 
-        <div className="onboarding-box column">
-          <img className="hero-img" src={require("./../../images/N.png")}></img>
-          <h2>Create Your Profile</h2>
+        <div className="onboarding-box relative p-4 rounded-2xl bg-white/30 flex flex-col justify-between items-center">
+          {/* <div className="logo bg-white w-16 h-16 rounded-xl shadow-xl grid items-center">
+            <span className="text-5xl text-center text-transparent bg-clip-text bg-gradient-to-tl from-violet-500 via-rose-500 to-amber-500 headline-font text-white font-black">
+              k
+            </span>
+          </div> */}
+          <h2 className="text-left text-4xl mb-6 text-black">
+            Create Your Profile
+          </h2>
           <form onSubmit={handleSubmit}>
             <div className="flex flex-col justify-center items-center">
-              <div className="flex items-center flex-col">
-                <div class="shrink-0">
+              <div className="flex w-full justify-between items-center">
+                <div>
                   <img
                     class="h-24 w-24 object-cover rounded-full"
                     src={
@@ -112,17 +131,16 @@ const Onboarding = () => {
                     alt="Current profile photo"
                   />
                 </div>
-                <div class="flex justify-center items-center">
-                  <span class="sr-only">Choose profile photo</span>
-                  <input
-                    type="file"
-                    class="w-1/2 file:rounded-full file:border-0 file:px-10 file:mr-10 bg-white"
-                    accept="image/*"
-                    onChange={handleProfileImage}
-                  />
-                </div>
+                <span class="sr-only">Choose profile photo</span>
+                <input
+                  type="file"
+                  class="w-1/2 file:rounded-full file:border-0 file:px-10 bg-white"
+                  accept="image/*"
+                  onChange={handleProfileImage}
+                />
               </div>
-              <div className="flex justify-between w-9/12">
+              <br />
+              <div className="flex justify-between w-full">
                 <input
                   onChange={(e) => setFirstName(e.target.value)}
                   name="firstName"
@@ -143,7 +161,7 @@ const Onboarding = () => {
                   className="px-4"
                 />
               </div>
-              <div className="flex justify-between items-center w-9/12">
+              <div className="flex justify-between w-full">
                 <input
                   onChange={(e) => setEmail(e.target.value)}
                   name="email"
@@ -220,9 +238,9 @@ const Onboarding = () => {
                 </div>
               </div>
             </div>
-            <div className="flex justify-center items-center mt-2">
+            <div className="flex justify-center items-center mt-8">
               <button
-                className={`bg-indigo-700 px-8 py-1 ${
+                className={`primary-btn w-full bg-white ${
                   submitDisabled ? "cursor-not-allowed" : "cursor-pointer"
                 }`}
                 type="submit"
