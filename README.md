@@ -40,7 +40,7 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://nkalari-8f0ee.web.app/)
 
-Kalari is a platform where performing artists can host their shows live.
+A livestreaming platform for musicians, painters, comedians, dancers and actors to showcase their talents to the world. Whether you're a musician, painter, comedian, dancer or actor, Kalari is the place for you to share your work with the world. With a wide selection of livestreaming channels, you can find the perfect one for you, and start streaming your performances today.
 
 ### Artefacts
 
@@ -56,15 +56,15 @@ Kalari is a platform where performing artists can host their shows live.
 
 ### Backend Repo
 
-[Backend Repo](https://github.com/pesto-students/n6-emarat-be-eta-6/)
+[Backend Repo](https://github.com/pesto-students/nkalari-be-n12-eta2)
 
 **Mission:**
 
-To empower amatuer performance artists to build their audience and community
+To empower amatuer performance artists to build their audience and community.
 
 **Vision:**
 
-To build a talent ecosystem for performing arts
+To build a talent ecosystem for performing arts.
 
 **Goals:**
 
@@ -125,22 +125,21 @@ Following are the simple steps to run this project.
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/pesto-students/n6-emarat-fe-eta-6.git emarat-fe
+   git clone https://github.com/pesto-students/nkalari-fe-n12-eta2
    ```
 2. Set environment variables
 
-    REACT_APP_PROXY=https://e-marat.herokuapp.com  
-    REACT_APP_FIREBASE_API_KEY=  
-    REACT_APP_FIREBASE_AUTH_DOMAIN=  
-    REACT_APP_FIREBASE_DATABASE_URL=  
-    REACT_APP_FIREBASE_PROJECT_ID=  
-    REACT_APP_FIREBASE_STORAGE_BUCKET=  
-    REACT_APP_FIREBASE_MESSAGING_SENDER_ID=  
-    REACT_APP_FIREBASE_APP_ID=  
-    REACT_APP_FIREBASE_MEASUREMENT_ID=  
-    REACT_APP_RAZORPAY_KEY_ID=  
-    REACT_APP_SENTRY_DSN=  
-    COUNTRY_CODE=+91  
+    ### frontend
+    REACT_APP_DOMAIN=http://localhost:4000
+    REACT_APP_CLOUDINARY_PRESET=nkalari
+    REACT_APP_CLOUDINARY_CLOUD_NAME=nkalari
+    REACT_APP_CLOUDINARY_URL=https://api.cloudinary.com/v1_1/puneet61/image/upload
+    REACT_APP_AGORA_APP_ID=f7899b6646784713883b43d23e2627b0
+    REACT_APP_AGORA_APP_CERTIFICATE=37f8775bf0fe49ff99f30ea26b584878
+
+    ### backend
+    AGORA_APP_ID=f7899b6646784713883b43d23e2627b0
+    AGORA_APP_CERTIFICATE=37f8775bf0fe49ff99f30ea26b584878
 
 3. Install NPM packages
    ```sh
@@ -157,8 +156,6 @@ Following are the simple steps to run this project.
 
 *To login in the app use no. 9999999999 and otp 123456*  
 
-## Other Available Scripts
-
 ## Tools and Libraries 
 
 - [Redux-Tool-Kit] - State Management
@@ -171,13 +168,13 @@ Following are the simple steps to run this project.
 
 ## Contributors
 
-Puneet - [GiHub](https://github.com/dev-deepak-rawat) - [Email](mailto:dev.deepak.rawat@gmail.com)
+Puneet - [GiHub](https://github.com/puneettiwari61) - [Email](mailto:puneettiwari61@gmail.com)
 
-Jagan - [GiHub](https://github.com/harisrahman) - [Email](mailto:hi@haris.tech)
+Jagan - [GiHub](https://github.com/jagan607) - [Email](mailto:jaganmohan19972016@gmail.com)
 
-Avirup - [GiHub](https://github.com/harisrahman) - [Email](mailto:hi@haris.tech)
+Avirup - [GiHub](https://github.com/axios047) - [Email](mailto:axios47@gmail.com)
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
-[product-screenshot]: https://res.cloudinary.com/emarat/image/upload/v1631802213/homepage-screenshot_n2dxwk.png
+[product-screenshot]: https://res.cloudinary.com/kalari/image/upload/v1644116161/Screenshot_2022-02-06_082548_kstljw.png
