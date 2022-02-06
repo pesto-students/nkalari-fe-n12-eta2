@@ -59,11 +59,13 @@ async function stripeCheckout(price_id) {
       "Access-Control-Allow-Origin": "*",
       "Access-Control-Allow-Methods": "GET, POST, PUT",
       "Access-Control-Allow-Headers": "Content-Type",
+      authorization: localStorage.getItem("nkalari"),
     } /* Give the required headers here */,
   };
 
   const response = await fetch(
-    `${process.env.REACT_APP_DOMAIN}/api/transactions/create-stripe-api?price_id=`+price_id,
+    `${process.env.REACT_APP_DOMAIN}/api/transactions/create-stripe-api?price_id=` +
+      price_id,
     requestOptions
   );
 

@@ -4,8 +4,11 @@ import Diamonds from "./../../images/Diamonds.png";
 import Navbar from "../navbar/Navbar";
 import "./index.css";
 import RechargePack from "./RechargePack";
+import { useSelector } from "react-redux";
 
 const RechargePage = () => {
+  const { currentUser } = useSelector((store) => store.user);
+
   return (
     <div className="main">
       {/* <Navbar className="nav-bar"></Navbar> */}
@@ -29,7 +32,7 @@ const RechargePage = () => {
             <div className="balance">
               <h2 className="balance-heading">Balance </h2>
               <div className="flex">
-                <h2 className="balance-value">5000</h2>
+                <h2 className="balance-value">{currentUser.wallet}</h2>
                 <img src={Diamonds} className="px-5" />
               </div>
             </div>

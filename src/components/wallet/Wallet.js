@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./index.css";
-import { connect } from "react-redux";
+import { connect, useSelector } from "react-redux";
 import { userActions } from "./../../actions/user.action";
 import Diamonds from "./../../images/Diamonds.png";
 import Navbar from "../navbar/Navbar";
@@ -100,6 +100,8 @@ function Wallet(props) {
 
   const data = React.useMemo(() => getData(), []);
 
+  console.log(props, "props");
+
   // const ctx = document.getElementById('myChart').getContext('2d');
 
   // const data = {
@@ -179,7 +181,7 @@ function Wallet(props) {
                   <span class="md:text-xl">
                     <img src={Diamonds}></img>
                   </span>
-                  92,817
+                  {props.currentUser.wallet}
                 </h2>
               </div>
               <div class="flex gap-2 md:gap-4">
@@ -261,7 +263,8 @@ function Wallet(props) {
 function mapState(state) {
   console.log("state", state);
   const { transactions } = state.getTransactions;
-  return { transactions };
+  const { currentUser } = state.user;
+  return { transactions, currentUser };
 }
 
 const actionCreators = {
