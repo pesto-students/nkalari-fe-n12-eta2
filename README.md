@@ -101,6 +101,9 @@ To build a talent ecosystem for performing arts.
 	<a href="https://www.heroku.com/">
 		<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Heroku_logo.svg/2560px-Heroku_logo.svg.png" title="Heroku" height="100">
 	</a>
+  <a href="https://www.agora.io/en/">
+		<img src="https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,f_auto,q_auto:eco,dpr_1/p49ujxdbaurplycovgrx" title="Agora" height="100">
+	</a>
 </p>
 
 <!-- GETTING STARTED -->
