@@ -76,3 +76,14 @@ export const getGigById = async (id) => {
 };
 
 
+// get gigs where the user is a host
+export const getGigsByHost = (userId) => {
+  let q = query(gigsRef, where("host_user.uid", "==", userId));
+  return ObservableFromQuery(q).pipe(
+    map((snapshot) => snapshot.docs),
+    map((docs) => docs.map(docData)),
+    shareReplay(1)
+  );
+
+}
+

@@ -443,7 +443,7 @@ const Comments = ({ rtmToken, rtcToken, channelName, isHost }) => {
 
   return (
     <div className="flex w-full">
-      <div className="grow flex justify-center items-center">
+      <div className="grow bg-black/30 flex justify-center items-center">
         {isStreamStarted &&
           (isHost ? (
             <div className="relative ml-24 h-full w-full">
