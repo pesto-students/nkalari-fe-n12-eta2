@@ -41,9 +41,9 @@ A livestreaming platform for musicians, painters, comedians, dancers and actors 
   </ol>
 </details>
 
-##DEMO
+## DEMO
 
-<h3 align="center">
+<h3>
 	<a href="https://nkalari-8f0ee.web.app/">Live URL</a>
 </h3>
 
