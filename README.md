@@ -70,9 +70,8 @@ Test Credentials:
 <br/>
 
 
-### Backend Repo
+### [Backend Repo] (https://github.com/pesto-students/nkalari-be-n12-eta2)
 
-[Backend Repo](https://github.com/pesto-students/nkalari-be-n12-eta2)
 
 
 ### Built With
