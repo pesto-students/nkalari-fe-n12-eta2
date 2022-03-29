@@ -4,10 +4,17 @@
 </p>
 
 <h1 align="center">Kalari Frontend</h1>
-<h3 align="center">
-	<a href="https://nkalari-8f0ee.web.app/">Live URL</a>
-</h3>
   
+
+
+<!-- ABOUT THE PROJECT -->
+
+## About The Project
+ 
+[![Product Name Screen Shot][product-screenshot]](https://nkalari-8f0ee.web.app/)
+
+A livestreaming platform for musicians, painters, comedians, dancers and actors to showcase their talents to the world. Whether you're a musician, painter, comedian, dancer or actor, Kalari is the place for you to share your work with the world. With a wide selection of livestreaming channels, you can find the perfect one for you, and start streaming your performances today.
+
 <!-- TABLE OF CONTENTS -->
 <details open="open">
   <summary>Table of Contents</summary>
@@ -34,48 +41,39 @@
   </ol>
 </details>
 
-<!-- ABOUT THE PROJECT -->
+##DEMO
 
-## About The Project
+<h3 align="center">
+	<a href="https://nkalari-8f0ee.web.app/">Live URL</a>
+</h3>
 
-[![Product Name Screen Shot][product-screenshot]](https://nkalari-8f0ee.web.app/)
+<br/>
 
-A livestreaming platform for musicians, painters, comedians, dancers and actors to showcase their talents to the world. Whether you're a musician, painter, comedian, dancer or actor, Kalari is the place for you to share your work with the world. With a wide selection of livestreaming channels, you can find the perfect one for you, and start streaming your performances today.
+Please Note:
 
-### Artefacts
+1. We recommend using this app in Google Chrome
+2. Use the app on Laptop/desktop only as of now.
 
-<a href="https://docs.google.com/document/d/1gusD8HeKRB9gGvAD0XKwNsuuJPW4fnxqiIsV9OKexUc/edit?usp=sharing">PRD</a>
-&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="https://res.cloudinary.com/kalari/image/upload/v1644122408/HLD_sclowx.png">HLD</a>
-&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="https://www.figma.com/file/8mfWR935k15JheCrD6oEzu/Hire-wand---Feature-Set?node-id=3%3A16">Wireframes</a>
-&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="https://drive.google.com/file/d/1RWk71ZR6cVY-c2g_gaNI5I6DZNRQJPzE/view?usp=sharing">Coding Practices</a>
+
+<br/>
+Test Credentials:
+
+- For User
+ 	 - Phone Number: 9999999999
+ 	 - OTP: 111111
+- For Doctor 
+	  - Phone Number: 8888888888
+	  - OTP: 222222
+- For Admin
+	- Phone Number: 7777777777
+  	- OTP: 333333
+<br/>
+
 
 ### Backend Repo
 
 [Backend Repo](https://github.com/pesto-students/nkalari-be-n12-eta2)
 
-**Mission:**
-
-To empower amatuer performance artists to build their audience and community.
-
-**Vision:**
-
-To build a talent ecosystem for performing arts.
-
-**Goals:**
-
--  Simple solutions for the problems.
-- All solutions are in one place.
-- Bridge the communication gap within the society.
-
-**Features:**
-
-- Livestream video
-- Chat with members
-- Superchat
-- Give gifts to the artist
 
 ### Built With
 
