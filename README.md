@@ -15,7 +15,7 @@
   <ol>
     <li>
       <ul>
-        <li><a href="#built-with">Built With</a></li>
+        <li><a href="#built-with">Tech Stack</a></li>
       </ul>
     </li>
     <li>
@@ -61,7 +61,7 @@ Test Credentials:
 
 
 
-### Built With
+### Tech Stack
 
 <p align="center">
 	<a href="https://reactjs.org/">
