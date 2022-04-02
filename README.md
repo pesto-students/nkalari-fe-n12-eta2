@@ -3,37 +3,26 @@
     <img src="https://res.cloudinary.com/kalari/image/upload/v1644114710/kalari_logo_gfxuj9.png" alt="Logo" width="120" >
 </p>
 
-<h1 align="center">Kalari Frontend</h1>
+<h1 align="center">N Kalari</h1>
   
 
 
-<!-- ABOUT THE PROJECT -->
 
-## About The Project
- 
-[![Product Name Screen Shot][product-screenshot]](https://nkalari-8f0ee.web.app/)
-
-A livestreaming platform for musicians, painters, comedians, dancers and actors to showcase their talents to the world. Whether you're a musician, painter, comedian, dancer or actor, Kalari is the place for you to share your work with the world. With a wide selection of livestreaming channels, you can find the perfect one for you, and start streaming your performances today.
 
 <!-- TABLE OF CONTENTS -->
 <details open="open">
   <summary>Table of Contents</summary>
   <ol>
     <li>
-      <a href="#about-the-project">About The Project</a>
       <ul>
-        <li><a href="#artefacts">Artefacts</a></li>
-        <li><a href="#backend-repo">Backend Repo</a></li>
         <li><a href="#built-with">Built With</a></li>
       </ul>
     </li>
     <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
         <li><a href="#installation">Installation</a></li>
         <li><a href="#test-credentials">Test Credentials</a></li>
-        <li><a href="#other-available-scripts">Other Available Scripts</a></li>
         <li><a href="#tools-and-libraries">Tools And Libraries</a></li>
       </ul>
     </li>
@@ -70,10 +59,6 @@ Test Credentials:
 <br/>
 
 
-### Backend Repo
-[Repository](https://github.com/pesto-students/nkalari-be-n12-eta2)
-
-
 
 
 ### Built With
@@ -103,23 +88,7 @@ Test Credentials:
 	</a>
 </p>
 
-<!-- GETTING STARTED -->
 
-## Getting Started
-
-Following are the simple steps to run this project.
-
-### Prerequisites
-
-- npm
-  ```sh
-  npm install npm@latest -g
-  ```
-
-- firebase
-  ```sh
-  npm install firebase -g
-  ```
 
 ### Installation
 
