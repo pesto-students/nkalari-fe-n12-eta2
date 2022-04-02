@@ -1,0 +1,7 @@
+body {
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 0;
+  @apply h-screen bg-gradient-to-b from-violet-500 via-rose-500 to-amber-500;
+}

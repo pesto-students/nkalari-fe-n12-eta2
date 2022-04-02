@@ -1,0 +1,52 @@
+.main {
+  display: flex;
+  flex-direction: row;
+  display: flex;
+  flex-direction: row;
+}
+
+.card {
+  height: 100%;
+  margin-left: 5%;
+  width: 50%;
+}
+
+.featuring {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  width: 100%;
+  height: 35%;
+  margin-top: 5%;
+  border-radius: 20px;
+  background: url("https://source.unsplash.com/VIn0V16IMtE/820x305");
+  background-repeat: no-repeat;
+  color: white;
+}
+/* 
+.following-count{
+  display: flex;
+}
+
+.following-count span{
+    align-self: flex-end;
+
+} */
+
+.profile-vertical-line {
+  border-left: 1px solid rgba(255, 255, 255, 0.452);
+  height: 70%;
+  position: absolute;
+  margin-top: 5%;
+  left: 65%;
+  top: 0;
+}
+
+.box-transaction {
+  width: 25rem;
+  padding-top: 20px;
+  margin-top: 10%;
+  margin-left: 30%;
+  padding-bottom: 20px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+}
